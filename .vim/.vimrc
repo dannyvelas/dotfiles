@@ -240,6 +240,7 @@ set guifont=Fira\ Mono\ Regular:h11
   augroup end
 
   autocmd FileType fish compiler fish
+  autocmd BufNewFile,BufReadPost *.fish setlocal tabstop=4 | setlocal shiftwidth=4
 
   " support for json comments
   autocmd FileType json syntax match Comment +\/\/.\+$+
