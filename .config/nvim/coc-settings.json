@@ -35,7 +35,10 @@
     "java",
     "cpp",
     "c",
-    "scala"
+    "scala",
+    "python"
   ],
-  "metals.javaHome": "/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.272.b10-0.fc33.x86_64/jre"
+  "java.home": "/usr/lib/jvm/java-11-openjdk",
+  "metals.javaHome": "/usr/lib/jvm/java-11-openjdk",
+  "python.venvPath": "~/.local/share/virtualenvs"
 }
