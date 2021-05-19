@@ -1,0 +1,60 @@
+#!/usr/bin/env python3
+import sys
+import os
+from datetime import datetime as dt
+
+log_dir = "<log-dir-here>"
+last_written_file_file = os.path.join(log_dir, 'last.txt')
+files = {"aps", "stit", "theory", "comp"}
+amt_args = len(sys.argv)
+
+#  log "message" | log --current | log -br | log --clear | log -p | log --append "message" | log --amend "message" | log -ndt "message" | log -nt "message"
+if amt_args == 2 or (amt_args == 3 and (sys.argv[1] in ["--append", "--amend", "-ndt", "-nt"])):
+    with open(last_written_file_file, "r") as file:
+        line = file.readline()
+        last_written_file = line.split(None, 1)[0]
+        if sys.argv[1] == "--current":
+            print(last_written_file)
+        else:
+            with open(os.path.join(log_dir, last_written_file), "r+") as file:
+                if sys.argv[1] == "--clear" or (amt_args == 3 and sys.argv[1] in ["--append", "--amend"]):
+                    lines = file.readlines()
+                    file.seek(0)
+                    file.truncate()
+                    for i, line in enumerate(lines):
+                        if i != len(lines)-1:
+                            file.write(line)
+                    if amt_args == 3 and sys.argv[1] in ["--append", "--amend"]:
+                        last_line = lines[len(lines)-1]
+                        if len(last_line.split(' ')) >= 3:
+                            if sys.argv[1] == "--amend":
+                                last_date, last_time = last_line.split(' ')[
+                                    0:2]
+                                file.write(
+                                    f'{last_date} {last_time} {sys.argv[2]}\n')
+                            elif sys.argv[1] == "--append":
+                                file.write(last_line.strip(
+                                    "\n") + sys.argv[2] + '\n')
+                        else:
+                            print(
+                                "Error: Last line is non-amendable or non-appendable")
+                elif sys.argv[1] == "-p":
+                    print(file.read(), end="")
+                else:
+                    file.seek(0, os.SEEK_END)
+                    if sys.argv[1] == "-br":
+                        file.write("\n")
+                    elif sys.argv[1] == "-ndt":
+                        file.write(f'{sys.argv[2]}\n')
+                    elif sys.argv[1] == "-nt":
+                        file.write(
+                            f'{dt.now().strftime("%d-%m-%Y")} {sys.argv[2]}\n')
+                    else:
+                        file.write(
+                            f'{dt.now().strftime("%d-%m-%Y %H:%M:%S")} {sys.argv[1]}\n')
+# log -s file
+elif amt_args == 3 and sys.argv[1] == "-s" and sys.argv[2] in files:
+    with open(last_written_file_file, "w") as file:
+        file.write(f'{sys.argv[2]}.txt')
+else:
+    print("usage: log -s (stit | aps | theory | comp) | --current | -br | --clear | -p | --append <msg> | --amend <msg> | -ndt <msg> | -nt <mst> | <msg>")
