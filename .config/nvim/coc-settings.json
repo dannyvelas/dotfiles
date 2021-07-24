@@ -8,7 +8,6 @@
         "elmAnalyseTrigger": "change"
       }
     },
-
     "ccls": {
       "command": "ccls",
       "filetypes": ["c", "cpp", "objc", "objcpp"],
@@ -38,6 +37,7 @@
     "scala",
     "python"
   ],
+  "typescript.format.enabled": false,
   "java.home": "/usr/lib/jvm/java-11-openjdk",
   "metals.javaHome": "/usr/lib/jvm/java-11-openjdk",
   "python.venvPath": "~/.local/share/virtualenvs"

@@ -12,11 +12,15 @@ endif
   Plug 'dag/vim-fish', { 'commit': '50b95cbbcd09c046121367d49039710e9dc9c15f' }
   Plug 'Yggdroot/indentLine', { 'commit': '5617a1cf7d315e6e6f84d825c85e3b669d220bfa' }
   Plug 'sirver/ultisnips', {'commit': '66d81fc2c0bda30be69fffa46da0932ee8d5ddd5' }
+  Plug 'prettier/vim-prettier', {'commit': 'aa0607ca7a0f61e91365ecf25947312ff4796302' } 
+  Plug 'leafgarland/typescript-vim', {'commit': '67e81e4292186889a1a519e1bf3a600d671237eb' }
+  Plug 'leafOfTree/vim-svelte-plugin', {'commit': 'f010611c84b760c0d918490423a56d26d8ab865c' }
+  Plug 'tpope/vim-fugitive', { 'commit': '8e0a8abf08318f91f63da510087b3110f20e58bf' }
   Plug '/usr/bin/fzf'
   call plug#end()
 
   " indent line
-  let g:indentLine_fileType = ['nerdtree', 'python', 'text']
+    let g:indentLine_fileType = ['nerdtree', 'python', 'text']
 
   " nerdtree
     let NERDTreeShowHidden=1
@@ -57,12 +61,23 @@ endif
     nnoremap <silent> <C-w>p :call coc#float#jump()<CR>
 
     " prettier
-    command! -nargs=0 Prettier :CocCommand prettier.formatFile
+    "command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
   " ultisnips
-  let g:UltiSnipsExpandTrigger = '<C-]>'
-  let g:UltiSnipsJumpForwardTrigger = '<C-]>'
-  let g:UltiSnipsJumpBackwardTrigger = '<C-Z>'
+    let g:UltiSnipsExpandTrigger = '<C-]>'
+    let g:UltiSnipsJumpForwardTrigger = '<C-]>'
+    let g:UltiSnipsJumpBackwardTrigger = '<C-Z>'
+
+  " vim-svelte-plugin
+    let g:vim_svelte_plugin_use_typescript = 1
+
+  " prettier
+    let g:prettier#quickfix_enabled = 0
+    let g:prettier#autoformat_require_pragma = 0
+    au BufWritePre *.css,*.svelte,*.pcss,*.html,*.ts,*.js,*.json PrettierAsync
+
+  " fugitive
+    nnoremap <silent> <leader>g :vertical rightbelow G<CR>
 
 " Theme
 colorscheme gruvbox
@@ -91,6 +106,8 @@ set guifont=Fira\ Mono\ Regular:h11
   set foldmethod=indent
   set clipboard=unnamedplus
   set showcmd
+  set diffopt=internal,filler,vertical
+  set splitright
 
 " re-mappings
   "escape insert mode
@@ -172,9 +189,6 @@ set guifont=Fira\ Mono\ Regular:h11
   " avoid accidentally pasting text
   inoremap <C-space> <space>
 
-  " go to beginning of line insert mode
-  inoremap <leader>bg <C-o>^
-
   " insert-mode terminal shortcuts
   inoremap <C-e> <C-o>$
   inoremap <C-b> <Left>
@@ -215,10 +229,6 @@ set guifont=Fira\ Mono\ Regular:h11
   " change word
   inoremap <leader>cw <Esc>lb"_cw
 
-  " copy from top/bottom
-  inoremap <C-r> <C-y>
-  inoremap <C-g> <C-e>
-
   " diagraphs
   inoremap <C-\> <C-k>
   
@@ -228,6 +238,8 @@ set guifont=Fira\ Mono\ Regular:h11
   " turn off full page scroll
   nnoremap <C-f>  <Nop>
 
+  " open help in vertical window
+  nnoremap <leader>h :vertical help 
 
 " file specific settings
   " detect ts react
