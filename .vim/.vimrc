@@ -16,6 +16,7 @@ endif
   Plug 'leafgarland/typescript-vim', {'commit': '67e81e4292186889a1a519e1bf3a600d671237eb' }
   Plug 'leafOfTree/vim-svelte-plugin', {'commit': 'f010611c84b760c0d918490423a56d26d8ab865c' }
   Plug 'tpope/vim-fugitive', { 'commit': '8e0a8abf08318f91f63da510087b3110f20e58bf' }
+  Plug 'godlygeek/tabular', { 'commit': '339091ac4dd1f17e225fe7d57b48aff55f99b23a' }
   Plug '/usr/bin/fzf'
   call plug#end()
 
@@ -87,6 +88,7 @@ set bg=dark
 set guifont=Fira\ Mono\ Regular:h11
 
 " Functionality
+
   syntax on
   set smartcase
   set ignorecase
@@ -108,6 +110,9 @@ set guifont=Fira\ Mono\ Regular:h11
   set showcmd
   set diffopt=internal,filler,vertical
   set splitright
+
+" transparency
+  hi Normal guibg=NONE ctermbg=NONE
 
 " re-mappings
   "escape insert mode
