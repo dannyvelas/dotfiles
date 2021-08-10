@@ -84,11 +84,7 @@ endif
 colorscheme gruvbox
 set bg=dark
 
-" Font
-set guifont=Fira\ Mono\ Regular:h11
-
 " Functionality
-
   syntax on
   set smartcase
   set ignorecase
@@ -186,10 +182,8 @@ set guifont=Fira\ Mono\ Regular:h11
   cnoremap <M-f> <S-Right>
   cnoremap <C-d> <Del>
 
-  " note taking bullet-points ease
-  inoremap <C-c> <C-o>o*<space><C-d><C-d>
-  inoremap <C-v> <C-o>o*<space><C-d>
-  inoremap <C-l> <C-o>o*<space>
+  " if the first character of a line is '*' and if the cursor is not on that character, then <Cr> makes a new line that starts with '*'
+  inoremap <expr> <Cr> (trim(getline('.'))[0]=='*' && getpos('.')[2]!=stridx(getline('.'), '*')+1) ? '<Cr>*<space><C-d>' : '<Cr>'
 
   " avoid accidentally pasting text
   inoremap <C-space> <space>
@@ -219,20 +213,8 @@ set guifont=Fira\ Mono\ Regular:h11
   " forward-delete words quickly
   inoremap <M-d> <Esc>l"_cw
 
-  " delete to EOL insertmode
-  inoremap <leader>de <C-o>"_D
-
-  " delete line insertmode
-  inoremap <leader>dd <C-o>"_dd
-
-  " replace entire line, insert mode
-  inoremap <leader>ss <Esc>^"_Di
-
   " go to end of word
   inoremap <leader>ew <C-o>e<Right>
-
-  " change word
-  inoremap <leader>cw <Esc>lb"_cw
 
   " diagraphs
   inoremap <C-\> <C-k>
@@ -244,7 +226,7 @@ set guifont=Fira\ Mono\ Regular:h11
   nnoremap <C-f>  <Nop>
 
   " open help in vertical window
-  nnoremap <leader>h :vertical help 
+  cabbrev help <c-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'vertical help' : 'help')<Cr>
 
 " file specific settings
   " detect ts react
