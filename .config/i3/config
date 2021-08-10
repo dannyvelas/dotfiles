@@ -48,7 +48,8 @@ exec --no-startup-id picom -CGb
 exec --no-startup-id xset s off
 exec --no-startup-id xset -dpms
 
-# make batter refer to last full capacity instead of design capacity
+# transfer in the gnome-keyring to remember passwords
+exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=secrets
 
 ##### BORDER SETTINGS ########################################################
 # size
@@ -94,8 +95,8 @@ bindsym $mod+q kill
 bindsym $mod+space exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -fn 'DejaVu Sans Mono-18' -i"
 
 # open chrome
-bindsym $mod+Ctrl+w exec google-chrome --force-device-scale-factor=1.3
-bindsym $mod+Ctrl+Shift+w exec google-chrome
+bindsym $mod+Ctrl+w exec google-chrome --force-device-scale-factor=1.3 --password-store=gnome
+bindsym $mod+Ctrl+Shift+w exec google-chrome --password-store=gnome
 
 # change focus
 bindsym $mod+h focus left
