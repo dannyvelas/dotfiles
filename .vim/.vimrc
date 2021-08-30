@@ -96,7 +96,6 @@ set bg=dark
   set expandtab
   set mouse=a
   set number relativenumber
-  set nu rnu
   set autoindent
   set smartindent
   set virtualedit=onemore
@@ -106,6 +105,8 @@ set bg=dark
   set showcmd
   set diffopt=internal,filler,vertical
   set splitright
+  set inccommand=nosplit
+  set nofixendofline
 
 " transparency
   hi Normal guibg=NONE ctermbg=NONE
