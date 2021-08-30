@@ -131,7 +131,7 @@ set bg=dark
   vnoremap p "_dp
 
   "add one line above
-  nnoremap <silent> ; :call append(line('.')-1, '')<CR>
+  nnoremap <silent> <C-]> :call append(line('.')-1, '')<CR>
   nnoremap <silent> <leader>b :call append(line('.'), '')<CR>
 
   "go to middle of line
@@ -182,8 +182,8 @@ set bg=dark
   cnoremap <M-f> <S-Right>
   cnoremap <C-d> <Del>
 
-  " if the first character of a line is '*' and if the cursor is not on that character, then <Cr> makes a new line that starts with '*'
-  inoremap <expr> <Cr> (trim(getline('.'))[0]=='*' && getpos('.')[2]!=stridx(getline('.'), '*')+1) ? '<Cr>*<space><C-d>' : '<Cr>'
+  " if the first character of a line is '*' and the cursor is after that character, then <Cr> makes a new line that starts with '*'
+  inoremap <expr> <Cr> (trim(getline('.'))[0]=='*' && getpos('.')[2]>stridx(getline('.'), '*')+1) ? '<Cr>*<space><C-d>' : '<Cr>'
 
   " avoid accidentally pasting text
   inoremap <C-space> <space>
