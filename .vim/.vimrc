@@ -17,28 +17,21 @@ endif
   Plug 'leafOfTree/vim-svelte-plugin', {'commit': 'f010611c84b760c0d918490423a56d26d8ab865c' }
   Plug 'tpope/vim-fugitive', { 'commit': '8e0a8abf08318f91f63da510087b3110f20e58bf' }
   Plug 'godlygeek/tabular', { 'commit': '339091ac4dd1f17e225fe7d57b48aff55f99b23a' }
-  Plug '/usr/bin/fzf'
+  Plug 'justinmk/vim-sneak', { 'commit': '95374ad3e4b5ef902854e8f4bcfa9a7a31a91d71' }
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+  Plug 'junegunn/fzf.vim'
   call plug#end()
 
   " indent line
-    let g:indentLine_fileType = ['nerdtree', 'python', 'text']
-
+    let g:indentLine_fileType = ['python', 'text']
+    
   " nerdtree
     let NERDTreeShowHidden=1
     let NERDTreeShowLineNumbers=1
     let NERDTreeNaturalSort=1
-    autocmd FileType nerdtree setlocal relativenumber
-
-    " start nerdtree on open. If a file is specified, move the cursor to its window.
-    autocmd StdinReadPre * let s:std_in=1
-    autocmd VimEnter * NERDTree | if argc() > 0 || exists("s:std_in") | wincmd p | endif
-
     " close if nerdtree is last window
     autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
           \ quit | endif
-
-    " open the exisiting NERDTree on each new tab
-    autocmd BufWinEnter * silent NERDTreeMirror
 
     " toggle nerdtree
     nnoremap <silent> <C-t> :NERDTreeToggle<CR>
@@ -61,9 +54,6 @@ endif
     " jump to floating error messages window
     nnoremap <silent> <C-w>p :call coc#float#jump()<CR>
 
-    " prettier
-    "command! -nargs=0 Prettier :CocCommand prettier.formatFile
-
   " ultisnips
     let g:UltiSnipsExpandTrigger = '<C-]>'
     let g:UltiSnipsJumpForwardTrigger = '<C-]>'
@@ -79,6 +69,14 @@ endif
 
   " fugitive
     nnoremap <silent> <leader>g :vertical rightbelow G<CR>
+
+  " vim-sneak
+    map f <Plug>Sneak_s
+    map F <Plug>Sneak_S
+
+  " fzf spawn
+    nnoremap <C-h> :Files<CR>
+    nnoremap <C-b> :Buffers<CR>
 
 " Theme
 colorscheme gruvbox
@@ -107,6 +105,7 @@ set bg=dark
   set splitright
   set inccommand=nosplit
   set nofixendofline
+  set hidden
 
 " transparency
   hi Normal guibg=NONE ctermbg=NONE
@@ -154,15 +153,6 @@ set bg=dark
   "automatically choose file for new pane
   nnoremap <C-w>v <C-w>v<C-w>l:
   nnoremap <C-w>s <C-w>s<C-w>j:
-
-  "jump to next uppercase
-  let g:camelchar="A-Z"
-  nnoremap <silent><C-h> :<C-u>call search('\C\<\<Bar>\%(^\<Bar>[^'.g:camelchar.']\@<=\)['.g:camelchar.']\<Bar>['.g:camelchar.']\ze\%([^'.g:camelchar.']\&\>\@!\)\<Bar>\%^','bW')<CR>
-  nnoremap <silent><C-l> :<C-u>call search('\C\<\<Bar>\%(^\<Bar>[^'.g:camelchar.']\@<=\)['.g:camelchar.']\<Bar>['.g:camelchar.']\ze\%([^'.g:camelchar.']\&\>\@!\)\<Bar>\%$','W')<CR>
-  inoremap <silent><M-b> <C-o>:call search('\C\<\<Bar>\%(^\<Bar>[^'.g:camelchar.']\@<=\)['.g:camelchar.']\<Bar>['.g:camelchar.']\ze\%([^'.g:camelchar.']\&\>\@!\)\<Bar>\%^','bW')<CR>
-  inoremap <silent><M-f> <C-o>:call search('\C\<\<Bar>\%(^\<Bar>[^'.g:camelchar.']\@<=\)['.g:camelchar.']\<Bar>['.g:camelchar.']\ze\%([^'.g:camelchar.']\&\>\@!\)\<Bar>\%$','W')<CR>
-  vnoremap <silent><C-h> :<C-U>call search('\C\<\<Bar>\%(^\<Bar>[^'.g:camelchar.']\@<=\)['.g:camelchar.']\<Bar>['.g:camelchar.']\ze\%([^'.g:camelchar.']\&\>\@!\)\<Bar>\%^','bW')<CR>v`>o
-  vnoremap <silent><C-l> <Esc>`>:<C-U>call search('\C\<\<Bar>\%(^\<Bar>[^'.g:camelchar.']\@<=\)['.g:camelchar.']\<Bar>['.g:camelchar.']\ze\%([^'.g:camelchar.']\&\>\@!\)\<Bar>\%$','W')<CR>v`<o
 
   "restart syntax highlighting
   nnoremap <silent> ++ :syn sync fromstart<CR>
