@@ -71,8 +71,13 @@ endif
     nnoremap <silent> <leader>g :vertical rightbelow G<CR>
 
   " vim-sneak
-    map f <Plug>Sneak_s
-    map F <Plug>Sneak_S
+    map f <Plug>Sneak_f
+    map F <Plug>Sneak_F
+    map t <Plug>Sneak_t
+    map T <Plug>Sneak_T
+    
+    map s <Plug>Sneak_s
+    map S <Plug>Sneak_S
 
   " fzf spawn
     nnoremap <C-h> :Files<CR>
@@ -119,13 +124,10 @@ set bg=dark
   nnoremap X "_X
   nnoremap c "_c
   nnoremap C "_C
-  nnoremap s "_s
-  nnoremap S "_S
   nnoremap d "_d
   nnoremap D "_D
 
   vnoremap c "_c
-  vnoremap s "_s
   vnoremap d "_d
   vnoremap P "_dP
   vnoremap p "_dp
