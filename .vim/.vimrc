@@ -24,11 +24,13 @@ endif
 
   " indent line
     let g:indentLine_fileType = ['python', 'text']
-    
+
   " nerdtree
     let NERDTreeShowHidden=1
     let NERDTreeShowLineNumbers=1
     let NERDTreeNaturalSort=1
+    autocmd FileType nerdtree setlocal relativenumber
+
     " close if nerdtree is last window
     autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
           \ quit | endif
@@ -75,7 +77,7 @@ endif
     map F <Plug>Sneak_F
     map t <Plug>Sneak_t
     map T <Plug>Sneak_T
-    
+
     map s <Plug>Sneak_s
     map S <Plug>Sneak_S
 
