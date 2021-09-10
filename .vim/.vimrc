@@ -18,6 +18,7 @@ endif
   Plug 'tpope/vim-fugitive', { 'commit': '8e0a8abf08318f91f63da510087b3110f20e58bf' }
   Plug 'godlygeek/tabular', { 'commit': '339091ac4dd1f17e225fe7d57b48aff55f99b23a' }
   Plug 'justinmk/vim-sneak', { 'commit': '95374ad3e4b5ef902854e8f4bcfa9a7a31a91d71' }
+  Plug 'tpope/vim-rsi'
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
   call plug#end()
@@ -162,26 +163,6 @@ endif
 
     " turn off full page scroll
     nnoremap <C-f>  <Nop>
-
-  " readline key bindings
-    " for vim-command prompt
-    cnoremap <C-a> <Home>
-    cnoremap <C-e> <End>
-    cnoremap <C-k> <C-\>estrpart(getcmdline(),0,getcmdpos()-1)<CR>
-    cnoremap <C-b> <Left>
-    cnoremap <expr> <C-F> getcmdpos()>strlen(getcmdline())?&cedit:"\<Lt>Right>"
-    cnoremap <M-b> <S-Left>
-    cnoremap <M-f> <S-Right>
-    cnoremap <C-d> <Del>
-    " get <C-a> mapping back
-    cnoremap <C-x><C-a> <C-a>
-
-    " for insert mode
-    inoremap <C-e> <C-o>$
-    inoremap <expr> <C-B> getline('.')=~'^\s*$'&&col('.')>strlen(getline('.'))?"0\<Lt>C-D>\<Lt>Esc>kJs":"\<Lt>Left>"
-    inoremap <expr> <C-F> col('.')>strlen(getline('.'))?"\<Lt>C-F>":"\<Lt>Right>"
-    inoremap <C-d> <Del>
-    inoremap <M-d> <Esc>l"_cw
 
   " insert mode bindings
     "escape
