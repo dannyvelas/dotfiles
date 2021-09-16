@@ -175,7 +175,7 @@ endif
     inoremap ,e <Esc>^"_d0i<Bs>
 
     " if the first character of a line is '*' and the cursor is after that character, then <Cr> makes a new line that starts with '*'
-    inoremap <expr> <Cr> (trim(getline('.'))[0]=='*' && getpos('.')[2]>stridx(getline('.'), '*')+1) ? '<Cr>*<space><C-d>' : '<Cr>'
+    inoremap <expr> <Cr> (trim(getline('.'))[0]=='*' && getpos('.')[2]>stridx(getline('.'), '*')+1) ? '<Cr>*<space>' : '<Cr>'
 
     " avoid accidentally pasting text
     inoremap <C-space> <space>
@@ -213,7 +213,7 @@ endif
 
   " txt files
     augroup formattxt
-      autocmd BufNewFile,BufReadPost *.txt setlocal textwidth=79 | setlocal formatoptions+=tqnro
+      autocmd BufNewFile,BufReadPost *.txt setlocal textwidth=79
       autocmd BufNewFile,BufReadPost *.txt setlocal spell spelllang=en_us
     augroup end
 
