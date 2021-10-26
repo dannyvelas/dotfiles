@@ -1,4 +1,5 @@
 alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
+alias rm="rm -i"
 
 
 function bind_bang
@@ -25,5 +26,8 @@ function fish_user_key_bindings
     bind '$' bind_dollar
 end
 
-# opam configuration
-source $HOME/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
+# opam
+#source $HOME/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
+
+# haskell
+set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME
