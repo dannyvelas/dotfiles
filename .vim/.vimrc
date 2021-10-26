@@ -4,24 +4,24 @@ endif
 
 " plugins
   " vim-plug
-  call plug#begin()
-  Plug 'neoclide/coc.nvim', {'commit': 'a336a8bc251702d9526a6818ae56e86d92fafc0c' }
-  Plug 'morhetz/gruvbox', { 'commit': 'bf2885a95efdad7bd5e4794dd0213917770d79b7' }
-  Plug 'preservim/nerdtree', { 'commit': 'a1fa4a33bf16b6661e502080fc97788bb98afd35' }
-  Plug 'tpope/vim-abolish', { 'commit': '7e4da6e78002344d499af9b6d8d5d6fcd7c92125' }
-  Plug 'dag/vim-fish', { 'commit': '50b95cbbcd09c046121367d49039710e9dc9c15f' }
-  Plug 'Yggdroot/indentLine', { 'commit': '5617a1cf7d315e6e6f84d825c85e3b669d220bfa' }
-  Plug 'sirver/ultisnips', {'commit': '66d81fc2c0bda30be69fffa46da0932ee8d5ddd5' }
-  Plug 'prettier/vim-prettier', {'commit': 'aa0607ca7a0f61e91365ecf25947312ff4796302' } 
-  Plug 'leafgarland/typescript-vim', {'commit': '67e81e4292186889a1a519e1bf3a600d671237eb' }
-  Plug 'leafOfTree/vim-svelte-plugin', {'commit': 'f010611c84b760c0d918490423a56d26d8ab865c' }
-  Plug 'tpope/vim-fugitive', { 'commit': '8e0a8abf08318f91f63da510087b3110f20e58bf' }
-  Plug 'godlygeek/tabular', { 'commit': '339091ac4dd1f17e225fe7d57b48aff55f99b23a' }
-  Plug 'justinmk/vim-sneak', { 'commit': '95374ad3e4b5ef902854e8f4bcfa9a7a31a91d71' }
-  Plug 'tpope/vim-rsi'
-  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-  Plug 'junegunn/fzf.vim'
-  call plug#end()
+    call plug#begin()
+    Plug 'neoclide/coc.nvim', {'commit': 'a336a8bc251702d9526a6818ae56e86d92fafc0c' }
+    Plug 'morhetz/gruvbox', { 'commit': 'bf2885a95efdad7bd5e4794dd0213917770d79b7' }
+    Plug 'preservim/nerdtree', { 'commit': 'a1fa4a33bf16b6661e502080fc97788bb98afd35' }
+    Plug 'tpope/vim-abolish', { 'commit': '7e4da6e78002344d499af9b6d8d5d6fcd7c92125' }
+    Plug 'dag/vim-fish', { 'commit': '50b95cbbcd09c046121367d49039710e9dc9c15f' }
+    Plug 'lukas-reineke/indent-blankline.nvim'
+    Plug 'sirver/ultisnips', {'commit': '66d81fc2c0bda30be69fffa46da0932ee8d5ddd5' }
+    Plug 'prettier/vim-prettier', {'commit': 'aa0607ca7a0f61e91365ecf25947312ff4796302' } 
+    Plug 'leafgarland/typescript-vim', {'commit': '67e81e4292186889a1a519e1bf3a600d671237eb' }
+    Plug 'leafOfTree/vim-svelte-plugin', {'commit': 'f010611c84b760c0d918490423a56d26d8ab865c' }
+    Plug 'tpope/vim-fugitive', { 'commit': '8e0a8abf08318f91f63da510087b3110f20e58bf' }
+    Plug 'godlygeek/tabular', { 'commit': '339091ac4dd1f17e225fe7d57b48aff55f99b23a' }
+    Plug 'nbouscal/vim-stylish-haskell'
+    Plug 'justinmk/vim-sneak', { 'commit': '95374ad3e4b5ef902854e8f4bcfa9a7a31a91d71' }
+    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+    Plug 'junegunn/fzf.vim'
+    call plug#end()
 
   " indent line
     let g:indentLine_fileType = ['python', 'text']
@@ -85,6 +85,19 @@ endif
   " fzf spawn
     nnoremap <C-h> :Files<CR>
     nnoremap <C-b> :Buffers<CR>
+    
+    function! RgDir(isFullScreen, args)
+        let l:restArgs = [a:args]
+
+        let l:restArgs = split(l:restArgs[0], '-pattern=', 1)
+        let l:pattern = join(l:restArgs[1:], '')
+
+        let l:restArgs = split(l:restArgs[0], '-path=', 1)
+        let l:path = trim(l:restArgs[1])
+
+        call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case " .. shellescape(l:pattern), 1, {'dir': l:path}, a:isFullScreen)
+    endfunction
+    command! -bang -nargs=+ -complete=dir RgD call RgDir(<bang>0, <q-args>)
 
 " Theme
   colorscheme gruvbox
@@ -136,17 +149,11 @@ endif
     "add one line above
     nnoremap <silent> <C-]> :call append(line('.')-1, '')<CR>
 
-    "go to middle of line
-    nnoremap <silent> gm :call cursor(0, len(getline('.'))/2)<CR>
-
     "move current line to EO prev line
     nnoremap _ ^"_d0i<Bs>
 
     "yank entire file
     nnoremap <silent> YY :%y+<CR>
-
-    "replace word independent of cursor position
-    nnoremap <leader>c b"_cw
 
     "automatically choose file for new pane
     nnoremap <C-w>v <C-w>v<C-w>l:
@@ -188,14 +195,44 @@ endif
     inoremap <C-t> <C-d>
     inoremap <C-y> <C-t>
 
-    " re-align vertical viewport to left margin
-    inoremap <leader>z <C-o>0<C-o>$
-
-    " go to end of word
-    inoremap <leader>ew <C-o>e<Right>
-
     " diagraphs
     inoremap <C-\> <C-k>
+
+  " readline bindings (cred: github.com/tpope/vim-rsi)
+    inoremap        <C-A> <C-O>^
+    inoremap   <C-X><C-A> <C-A>
+    cnoremap        <C-A> <Home>
+    cnoremap   <C-X><C-A> <C-A>
+    
+    inoremap <expr> <C-B> getline('.')=~'^\s*$'&&col('.')>strlen(getline('.'))?"0\<Lt>C-D>\<Lt>Esc>kJs":"\<Lt>Left>"
+    cnoremap        <C-B> <Left>
+
+    inoremap <expr> <C-D> col('.')>strlen(getline('.'))?"\<Lt>C-D>":"\<Lt>Del>"
+    cnoremap <expr> <C-D> getcmdpos()>strlen(getcmdline())?"\<Lt>C-D>":"\<Lt>Del>"
+    
+    inoremap <expr> <C-E> col('.')>strlen(getline('.'))?"\<Lt>C-E>":"\<Lt>End>"
+
+    inoremap <expr> <C-F> col('.')>strlen(getline('.'))?"\<Lt>C-F>":"\<Lt>Right>"
+    cnoremap <expr> <C-F> getcmdpos()>strlen(getcmdline())?&cedit:"\<Lt>Right>"
+
+    function! s:ctrl_u()
+      if getcmdpos() > 1
+        let @- = getcmdline()[:getcmdpos()-2]
+      endif
+      return "\<C-U>"
+    endfunction
+    cnoremap <expr> <C-U> <SID>ctrl_u()
+
+    noremap! <M-b> <S-Left>
+    inoremap <M-f> <C-o>e<Right>
+    cnoremap <M-f> <S-Right>
+    inoremap <M-d> <C-O>dw
+    cnoremap <M-d> <S-Right><C-W>
+    noremap! <M-n> <Down>
+    noremap! <M-p> <Up>
+
+  " custom commands
+    command Bd bp | sp | bn | bd
 
   " terminal mode bindings
     " open
