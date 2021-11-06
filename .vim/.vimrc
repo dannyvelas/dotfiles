@@ -194,6 +194,9 @@ endif
     " shift insert mode
     inoremap <C-t> <C-d>
     inoremap <C-y> <C-t>
+    
+    " copy character below
+    inoremap <C-c> <C-e>
 
     " diagraphs
     inoremap <C-\> <C-k>
@@ -207,13 +210,17 @@ endif
     inoremap <expr> <C-B> getline('.')=~'^\s*$'&&col('.')>strlen(getline('.'))?"0\<Lt>C-D>\<Lt>Esc>kJs":"\<Lt>Left>"
     cnoremap        <C-B> <Left>
 
-    inoremap <expr> <C-D> col('.')>strlen(getline('.'))?"\<Lt>C-D>":"\<Lt>Del>"
-    cnoremap <expr> <C-D> getcmdpos()>strlen(getcmdline())?"\<Lt>C-D>":"\<Lt>Del>"
+    inoremap <C-D> <Delete>
+    cnoremap <C-D> <Delete>
     
-    inoremap <expr> <C-E> col('.')>strlen(getline('.'))?"\<Lt>C-E>":"\<Lt>End>"
+    " if at EOL, copy char above cursor. otherwise go to EOL
+    inoremap <expr> <C-E> col('.')>strlen(getline('.'))?"\<Lt>C-Y>":"\<Lt>End>"
 
     inoremap <expr> <C-F> col('.')>strlen(getline('.'))?"\<Lt>C-F>":"\<Lt>Right>"
     cnoremap <expr> <C-F> getcmdpos()>strlen(getcmdline())?&cedit:"\<Lt>Right>"
+
+    cnoremap <C-X><C-k> <C-k>
+    cnoremap <C-k> <c-\>egetcmdline()[:getcmdpos()-2]<CR>
 
     function! s:ctrl_u()
       if getcmdpos() > 1
@@ -232,7 +239,9 @@ endif
     noremap! <M-p> <Up>
 
   " custom commands
-    command Bd bp | sp | bn | bd
+    if !exists(":Bd")
+      command Bd bp | sp | bn | bd
+    end
 
   " terminal mode bindings
     " open
@@ -250,7 +259,9 @@ endif
 
   " txt files
     augroup formattxt
-      autocmd BufNewFile,BufReadPost *.txt setlocal textwidth=79
+      autocmd BufNewFile,BufReadPost *.txt setlocal wrap | setlocal breakindent | setlocal linebreak | setlocal breakindentopt=shift:2,min:40
+      autocmd BufNewFile,BufReadPost *.txt nnoremap <buffer> j gj
+      autocmd BufNewFile,BufReadPost *.txt nnoremap <buffer> k gk
       autocmd BufNewFile,BufReadPost *.txt setlocal spell spelllang=en_us
     augroup end
 
