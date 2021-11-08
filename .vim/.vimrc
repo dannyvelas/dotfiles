@@ -21,6 +21,7 @@ endif
     Plug 'justinmk/vim-sneak', { 'commit': '95374ad3e4b5ef902854e8f4bcfa9a7a31a91d71' }
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
+    Plug 'udalov/kotlin-vim'
     call plug#end()
 
   " indent line
