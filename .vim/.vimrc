@@ -203,22 +203,21 @@ endif
     inoremap <C-\> <C-k>
 
   " readline bindings (cred: github.com/tpope/vim-rsi)
-    inoremap        <C-A> <C-O>^
-    inoremap   <C-X><C-A> <C-A>
-    cnoremap        <C-A> <Home>
-    cnoremap   <C-X><C-A> <C-A>
-    
-    inoremap <expr> <C-B> getline('.')=~'^\s*$'&&col('.')>strlen(getline('.'))?"0\<Lt>C-D>\<Lt>Esc>kJs":"\<Lt>Left>"
-    cnoremap        <C-B> <Left>
+    inoremap <C-A> <C-O>^
+    cnoremap <C-A> <Home>
 
-    inoremap <C-D> <Delete>
-    cnoremap <C-D> <Delete>
+    " noremap! == insert and command mode
+    noremap! <C-X><C-A> <C-A>
+    noremap! <C-B> <Left>
+    noremap! <C-D> <Delete>
     
     " if at EOL, copy char above cursor. otherwise go to EOL
-    inoremap <expr> <C-E> col('.')>strlen(getline('.'))?"\<Lt>C-Y>":"\<Lt>End>"
+    inoremap <expr> <C-E> col('.')>strlen(getline('.')) ? "\<Lt>C-Y>" : "\<Lt>End>"
 
-    inoremap <expr> <C-F> col('.')>strlen(getline('.'))?"\<Lt>C-F>":"\<Lt>Right>"
-    cnoremap <expr> <C-F> getcmdpos()>strlen(getcmdline())?&cedit:"\<Lt>Right>"
+    inoremap <C-F> <Right>
+
+    " if at EOL, open command history, otherwise move right
+    cnoremap <C-F> getcmdpos()>strlen(getcmdline()) ? &cedit : "\<Lt>Right>"
 
     cnoremap <C-X><C-k> <C-k>
     cnoremap <C-k> <c-\>egetcmdline()[:getcmdpos()-2]<CR>
@@ -247,6 +246,7 @@ endif
   " terminal mode bindings
     " open
     nnoremap <C-\> <C-w>s<C-w>j:terminal<CR>A
+
     " escape
     tnoremap <C-[> <C-\><C-n>
   
@@ -261,8 +261,8 @@ endif
   " txt files
     augroup formattxt
       autocmd BufNewFile,BufReadPost *.txt setlocal wrap | setlocal breakindent | setlocal linebreak | setlocal breakindentopt=shift:2,min:40
-      autocmd BufNewFile,BufReadPost *.txt nnoremap <buffer> j gj
-      autocmd BufNewFile,BufReadPost *.txt nnoremap <buffer> k gk
+      autocmd BufNewFile,BufReadPost *.txt nnoremap <buffer> <expr> j v:count == 0 ? 'gj' : "\<Esc>".v:count.'j'
+      autocmd BufNewFile,BufReadPost *.txt nnoremap <buffer> <expr> k v:count == 0 ? 'gk' : "\<Esc>".v:count.'k'
       autocmd BufNewFile,BufReadPost *.txt setlocal spell spelllang=en_us
     augroup end
 
