@@ -217,7 +217,7 @@ endif
     inoremap <C-F> <Right>
 
     " if at EOL, open command history, otherwise move right
-    cnoremap <C-F> getcmdpos()>strlen(getcmdline()) ? &cedit : "\<Lt>Right>"
+    cnoremap <expr> <C-F> getcmdpos()>strlen(getcmdline()) ? &cedit : "\<Lt>Right>"
 
     cnoremap <C-X><C-k> <C-k>
     cnoremap <C-k> <c-\>egetcmdline()[:getcmdpos()-2]<CR>
