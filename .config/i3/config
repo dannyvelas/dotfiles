@@ -31,7 +31,7 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
 
 # set up mapping for switching keyboard layouts & swap left ctrl and caps lock
-exec --no-startup-id setxkbmap -model pc105 -layout us,us,us -variant ,dvorak,dvp -option grp:lwin_toggle -option ctrl:nocaps -option compose:lctrl
+exec --no-startup-id setxkbmap -model pc105 -layout us,us,us -variant ,dvorak -option grp:lwin_toggle -option ctrl:nocaps -option compose:lctrl
 
 # set up second monitor
 set $monitor "DP-1"
@@ -93,8 +93,8 @@ bindsym $mod+q kill
 bindsym $mod+space exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -fn 'DejaVu Sans Mono-18' -i"
 
 # open chrome
-bindsym $mod+Ctrl+w exec google-chrome --force-device-scale-factor=1.3 --password-store=gnome
-bindsym $mod+Ctrl+Shift+w exec google-chrome --password-store=gnome
+bindsym $mod+Ctrl+w exec       "google-chrome --password-store=gnome --simulate-outdated-no-au='Tue, 31 Dec 2099 23:59:59 GMT'"
+bindsym $mod+Ctrl+Shift+w exec "google-chrome --password-store=gnome --simulate-outdated-no-au='Tue, 31 Dec 2099 23:59:59 GMT' --force-device-scale-factor=1.3"
 
 # change focus
 bindsym $mod+h focus left
