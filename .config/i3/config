@@ -79,7 +79,7 @@ bindsym XF86MonBrightnessUp exec brightnessctl s +1%
 bindsym XF86MonBrightnessDown exec brightnessctl s 1%-
 
 bindsym Ctrl+Shift+3 exec maim ~/Pictures/"Screenshot from $(date '+%Y-%m-%d %H-%M-%S').png"
-bindsym Ctrl+Shift+4 exec maim -s | xclip -selection clipboard -t image/png
+bindsym Ctrl+Shift+4 exec maim -s ~/Pictures/"Screenshot from $(date '+%Y-%m-%d %H-%M-%S').png"
 ##############################################################################
 
 ####### WINDOW MAPPINGS ######################################################
