@@ -263,7 +263,7 @@ endif
       autocmd BufNewFile,BufReadPost *.txt setlocal wrap | setlocal breakindent | setlocal linebreak | setlocal breakindentopt=shift:2,min:40
       autocmd BufNewFile,BufReadPost *.txt nnoremap <buffer> <expr> j v:count == 0 ? 'gj' : "\<Esc>".v:count.'j'
       autocmd BufNewFile,BufReadPost *.txt nnoremap <buffer> <expr> k v:count == 0 ? 'gk' : "\<Esc>".v:count.'k'
-      autocmd BufNewFile,BufReadPost *.txt setlocal spell spelllang=en_us
+      " autocmd BufNewFile,BufReadPost *.txt setlocal spell spelllang=en_us
     augroup end
 
   " fish
