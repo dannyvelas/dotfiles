@@ -11,7 +11,6 @@ endif
     Plug 'tpope/vim-abolish', { 'commit': '7e4da6e78002344d499af9b6d8d5d6fcd7c92125' }
     Plug 'dag/vim-fish', { 'commit': '50b95cbbcd09c046121367d49039710e9dc9c15f' }
     Plug 'lukas-reineke/indent-blankline.nvim'
-    Plug 'sirver/ultisnips', {'commit': '66d81fc2c0bda30be69fffa46da0932ee8d5ddd5' }
     Plug 'prettier/vim-prettier', {'commit': 'aa0607ca7a0f61e91365ecf25947312ff4796302' } 
     Plug 'leafgarland/typescript-vim', {'commit': '67e81e4292186889a1a519e1bf3a600d671237eb' }
     Plug 'leafOfTree/vim-svelte-plugin', {'commit': 'f010611c84b760c0d918490423a56d26d8ab865c' }
@@ -57,11 +56,6 @@ endif
 
     " jump to floating error messages window
     nnoremap <silent> <C-w>p :call coc#float#jump()<CR>
-
-  " ultisnips
-    let g:UltiSnipsExpandTrigger = '<C-]>'
-    let g:UltiSnipsJumpForwardTrigger = '<C-]>'
-    let g:UltiSnipsJumpBackwardTrigger = '<C-Z>'
 
   " vim-svelte-plugin
     let g:vim_svelte_plugin_use_typescript = 1
