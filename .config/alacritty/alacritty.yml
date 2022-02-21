@@ -850,6 +850,7 @@ key_bindings:
   #- { key: F,              mods: Command|Control,            action: ToggleFullscreen      }
   #- { key: F,              mods: Command, mode: ~Search,     action: SearchForward         }
   #- { key: B,              mods: Command, mode: ~Search,     action: SearchBackward        }
+  - { key: B,              mods: Alt,                        chars: "\x1BB"                }
 
 #debug:
   # Display the time it takes to redraw each frame.
