@@ -5,19 +5,19 @@ endif
 " plugins
   " vim-plug
     call plug#begin()
-    Plug 'neoclide/coc.nvim', {'commit': 'a336a8bc251702d9526a6818ae56e86d92fafc0c' }
-    Plug 'morhetz/gruvbox', { 'commit': 'bf2885a95efdad7bd5e4794dd0213917770d79b7' }
-    Plug 'preservim/nerdtree', { 'commit': 'a1fa4a33bf16b6661e502080fc97788bb98afd35' }
-    Plug 'tpope/vim-abolish', { 'commit': '7e4da6e78002344d499af9b6d8d5d6fcd7c92125' }
-    Plug 'dag/vim-fish', { 'commit': '50b95cbbcd09c046121367d49039710e9dc9c15f' }
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    Plug 'morhetz/gruvbox'
+    Plug 'preservim/nerdtree'
+    Plug 'tpope/vim-abolish'
+    Plug 'dag/vim-fish'
     Plug 'lukas-reineke/indent-blankline.nvim'
-    Plug 'prettier/vim-prettier', {'commit': 'aa0607ca7a0f61e91365ecf25947312ff4796302' } 
-    Plug 'leafgarland/typescript-vim', {'commit': '67e81e4292186889a1a519e1bf3a600d671237eb' }
-    Plug 'leafOfTree/vim-svelte-plugin', {'commit': 'f010611c84b760c0d918490423a56d26d8ab865c' }
-    Plug 'tpope/vim-fugitive', { 'commit': '8e0a8abf08318f91f63da510087b3110f20e58bf' }
-    Plug 'godlygeek/tabular', { 'commit': '339091ac4dd1f17e225fe7d57b48aff55f99b23a' }
+    Plug 'prettier/vim-prettier'
+    Plug 'leafgarland/typescript-vim'
+    Plug 'leafOfTree/vim-svelte-plugin'
+    Plug 'tpope/vim-fugitive'
+    Plug 'godlygeek/tabular'
     Plug 'nbouscal/vim-stylish-haskell'
-    Plug 'justinmk/vim-sneak', { 'commit': '95374ad3e4b5ef902854e8f4bcfa9a7a31a91d71' }
+    Plug 'justinmk/vim-sneak'
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
     Plug 'udalov/kotlin-vim'
@@ -115,7 +115,7 @@ endif
   set virtualedit=onemore
   set nohlsearch
   set foldmethod=indent
-  set clipboard=unnamedplus
+  set clipboard+=unnamedplus
   set showcmd
   set diffopt=internal,filler,vertical
   set splitright

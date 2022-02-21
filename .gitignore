@@ -17,6 +17,7 @@
 !.config/nvim/*
 !.config/nvim/UltiSnips/*
 
+!.vimrc
 !.vim/
 !.vim/.vimrc
 !.vim/autoload/
