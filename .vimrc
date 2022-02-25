@@ -16,7 +16,6 @@ endif
     Plug 'leafgarland/typescript-vim'
     Plug 'leafOfTree/vim-svelte-plugin'
     Plug 'nbouscal/vim-stylish-haskell'
-    Plug 'udalov/kotlin-vim'
     " Telescope
     Plug 'nvim-lua/plenary.nvim'
     Plug 'nvim-telescope/telescope.nvim'
@@ -73,43 +72,6 @@ endif
 
     map s <Plug>Sneak_s
     map S <Plug>Sneak_S
-
-  " telescope
-    nnoremap <silent> <leader>b :lua require('telescope.builtin').buffers()<CR>
-
-    " FILE SEARCH
-      " regular
-      nnoremap <silent> <C-h> :lua require('telescope.builtin').find_files()<CR>
-      " including hidden files
-      nnoremap <silent> <leader>th :lua require('telescope.builtin').find_files({hidden=true})<CR>
-      " including gitignore files
-      nnoremap <silent> <leader>ti :lua require('telescope.builtin').find_files({no_ignore=true})<CR>
-      " including both
-      nnoremap <silent> <leader>ta :lua require('telescope.builtin').find_files({hidden=true, no_ignore=true})<CR>
-
-    " GREP
-      " ripgrep regular
-      nnoremap <silent> <leader>rr :lua require('telescope.builtin').live_grep()<CR>
-      " ripgrep including hidden files
-      nnoremap <silent> <leader>rh :lua require('telescope.builtin').live_grep({ vimgrep_arguments = { "rg", "--color=never", "--no-heading", "--with-filename", "--line-number", "--column", "--smart-case", "--hidden" }})<Cr>
-      " ripgrep including gitignore files
-      nnoremap <silent> <leader>ri :lua require('telescope.builtin').live_grep({ vimgrep_arguments = { "rg", "--color=never", "--no-heading", "--with-filename", "--line-number", "--column", "--smart-case", "--no-ignore" }})<Cr>
-      " ripgrep including hidden and gitignore (all) files
-      nnoremap <silent> <leader>ra :lua require('telescope.builtin').live_grep({ vimgrep_arguments = { "rg", "--color=never", "--no-heading", "--with-filename", "--line-number", "--column", "--smart-case", "--hidden", "--no-ignore" }})<Cr>
-
-    lua << EOF
-    require('telescope').setup {
-      extensions = {
-        fzf = {
-          fuzzy = true,                    -- false will only do exact matching
-          override_generic_sorter = true,  -- override the telescope generic sorter
-          override_file_sorter = true,     -- override the telescope file sorter
-        }
-      }
-    }
-
-    require('telescope').load_extension('fzf')
-EOF
 
 " Theme
   colorscheme gruvbox
@@ -249,11 +211,6 @@ EOF
     noremap! <M-n> <Down>
     noremap! <M-p> <Up>
 
-  " custom commands
-    if !exists(":Bd")
-      command Bd bp | sp | bn | bd
-    end
-
   " terminal mode bindings
     " open
     nnoremap <C-\> <C-w>s<C-w>j:terminal<CR>A
@@ -264,6 +221,11 @@ EOF
   " cabbrevs
     " open help in vertical window
     cabbrev help <c-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'vertical help' : 'help')<Cr>
+
+  " custom commands
+    if !exists(":Bd")
+      command Bd bp | sp | bn | bd
+    end
 
 " file specific settings
   " ts react
