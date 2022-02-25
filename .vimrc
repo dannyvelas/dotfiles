@@ -248,7 +248,6 @@ endif
     augroup end
 
   " fish
-    autocmd FileType fish compiler fish
     autocmd BufNewFile,BufReadPost *.fish setlocal tabstop=4 | setlocal shiftwidth=4
 
   " json comments
