@@ -8,23 +8,20 @@ endif
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'morhetz/gruvbox'
     Plug 'preservim/nerdtree'
+    Plug 'tpope/vim-fugitive'
+    Plug 'justinmk/vim-sneak'
     Plug 'tpope/vim-abolish'
-    Plug 'dag/vim-fish'
-    Plug 'lukas-reineke/indent-blankline.nvim'
+    Plug 'godlygeek/tabular'
     Plug 'prettier/vim-prettier'
     Plug 'leafgarland/typescript-vim'
     Plug 'leafOfTree/vim-svelte-plugin'
-    Plug 'tpope/vim-fugitive'
-    Plug 'godlygeek/tabular'
     Plug 'nbouscal/vim-stylish-haskell'
-    Plug 'justinmk/vim-sneak'
-    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-    Plug 'junegunn/fzf.vim'
     Plug 'udalov/kotlin-vim'
+    " Telescope
+    Plug 'nvim-lua/plenary.nvim'
+    Plug 'nvim-telescope/telescope.nvim'
+    Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
     call plug#end()
-
-  " indent line
-    let g:indentLine_fileType = ['python', 'text']
 
   " nerdtree
     let NERDTreeShowHidden=1
@@ -77,22 +74,42 @@ endif
     map s <Plug>Sneak_s
     map S <Plug>Sneak_S
 
-  " fzf spawn
-    nnoremap <C-h> :Files<CR>
-    nnoremap <C-b> :Buffers<CR>
-    
-    function! RgDir(isFullScreen, args)
-        let l:restArgs = [a:args]
+  " telescope
+    nnoremap <silent> <leader>b :lua require('telescope.builtin').buffers()<CR>
 
-        let l:restArgs = split(l:restArgs[0], '-pattern=', 1)
-        let l:pattern = join(l:restArgs[1:], '')
+    " FILE SEARCH
+      " regular
+      nnoremap <silent> <C-h> :lua require('telescope.builtin').find_files()<CR>
+      " including hidden files
+      nnoremap <silent> <leader>th :lua require('telescope.builtin').find_files({hidden=true})<CR>
+      " including gitignore files
+      nnoremap <silent> <leader>ti :lua require('telescope.builtin').find_files({no_ignore=true})<CR>
+      " including both
+      nnoremap <silent> <leader>ta :lua require('telescope.builtin').find_files({hidden=true, no_ignore=true})<CR>
 
-        let l:restArgs = split(l:restArgs[0], '-path=', 1)
-        let l:path = trim(l:restArgs[1])
+    " GREP
+      " ripgrep regular
+      nnoremap <silent> <leader>rr :lua require('telescope.builtin').live_grep()<CR>
+      " ripgrep including hidden files
+      nnoremap <silent> <leader>rh :lua require('telescope.builtin').live_grep({ vimgrep_arguments = { "rg", "--color=never", "--no-heading", "--with-filename", "--line-number", "--column", "--smart-case", "--hidden" }})<Cr>
+      " ripgrep including gitignore files
+      nnoremap <silent> <leader>ri :lua require('telescope.builtin').live_grep({ vimgrep_arguments = { "rg", "--color=never", "--no-heading", "--with-filename", "--line-number", "--column", "--smart-case", "--no-ignore" }})<Cr>
+      " ripgrep including hidden and gitignore (all) files
+      nnoremap <silent> <leader>ra :lua require('telescope.builtin').live_grep({ vimgrep_arguments = { "rg", "--color=never", "--no-heading", "--with-filename", "--line-number", "--column", "--smart-case", "--hidden", "--no-ignore" }})<Cr>
 
-        call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case " .. shellescape(l:pattern), 1, {'dir': l:path}, a:isFullScreen)
-    endfunction
-    command! -bang -nargs=+ -complete=dir RgD call RgDir(<bang>0, <q-args>)
+    lua << EOF
+    require('telescope').setup {
+      extensions = {
+        fzf = {
+          fuzzy = true,                    -- false will only do exact matching
+          override_generic_sorter = true,  -- override the telescope generic sorter
+          override_file_sorter = true,     -- override the telescope file sorter
+        }
+      }
+    }
+
+    require('telescope').load_extension('fzf')
+EOF
 
 " Theme
   colorscheme gruvbox
@@ -252,15 +269,15 @@ endif
   " ts react
     autocmd BufNewFile,BufReadPost *.tsx setlocal filetype=typescript.tsx
 
-  " txt files
+  " format text
     augroup formattxt
       autocmd BufNewFile,BufReadPost *.txt setlocal wrap | setlocal breakindent | setlocal linebreak | setlocal breakindentopt=shift:2,min:40
       autocmd BufNewFile,BufReadPost *.txt nnoremap <buffer> <expr> j v:count == 0 ? 'gj' : "\<Esc>".v:count.'j'
       autocmd BufNewFile,BufReadPost *.txt nnoremap <buffer> <expr> k v:count == 0 ? 'gk' : "\<Esc>".v:count.'k'
     augroup end
 
-  " Markdown
-    augroup formattxt
+  " format Markdown
+    augroup formatmd
       autocmd BufNewFile,BufReadPost *.md setlocal wrap | setlocal breakindent | setlocal linebreak | setlocal breakindentopt=shift:2,min:40
       autocmd BufNewFile,BufReadPost *.md setlocal shiftwidth=4 | setlocal tabstop=4
       autocmd BufNewFile,BufReadPost *.md nnoremap <buffer> <expr> j v:count == 0 ? 'gj' : "\<Esc>".v:count.'j'
