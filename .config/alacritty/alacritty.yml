@@ -850,7 +850,8 @@ key_bindings:
   #- { key: F,              mods: Command|Control,            action: ToggleFullscreen      }
   #- { key: F,              mods: Command, mode: ~Search,     action: SearchForward         }
   #- { key: B,              mods: Command, mode: ~Search,     action: SearchBackward        }
-  - { key: B,              mods: Alt,                        chars: "\x1bB"                } #M-b -> Back
+  - { key: B,              mods: Alt,                        chars: "\x1bb"                } #M-b -> Back
+  - { key: F,              mods: Alt,                        chars: "\x1bf"                } #M-f -> Forward
   - { key: Key6,           mods: Control,                    chars: "\x1e"                 } #C-6 -> C-^
 
 #debug:
