@@ -852,6 +852,7 @@ key_bindings:
   #- { key: B,              mods: Command, mode: ~Search,     action: SearchBackward        }
   - { key: B,              mods: Alt,                        chars: "\x1bb"                } #M-b -> Back
   - { key: F,              mods: Alt,                        chars: "\x1bf"                } #M-f -> Forward
+  - { key: D,              mods: Alt,                        chars: "\x1bd"                } #M-d -> Delete
   - { key: Key6,           mods: Control,                    chars: "\x1e"                 } #C-6 -> C-^
 
 #debug:

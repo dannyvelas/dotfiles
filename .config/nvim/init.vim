@@ -14,7 +14,7 @@ source ~/.vimrc
     nnoremap <silent> <leader>th :lua require('telescope.builtin').find_files({hidden=true})<CR>
     " including gitignore files
     nnoremap <silent> <leader>ti :lua require('telescope.builtin').find_files({no_ignore=true})<CR>
-    " including both
+    " including all
     nnoremap <silent> <leader>ta :lua require('telescope.builtin').find_files({hidden=true, no_ignore=true})<CR>
 
   " Grep
