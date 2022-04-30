@@ -26,6 +26,8 @@ function fish_user_key_bindings
     bind '$' bind_dollar
 end
 
+bass source $NVM_DIR/nvm.sh
+
 # opam
 #source $HOME/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
 
