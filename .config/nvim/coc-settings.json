@@ -54,5 +54,7 @@
   ],
   "typescript.format.enabled": false,
   "java.home": "/usr/lib/jvm/java-11-openjdk",
-  "metals.javaHome": "/usr/lib/jvm/java-11-openjdk"
+  "metals.javaHome": "/usr/lib/jvm/java-11-openjdk",
+  "svelte.enable-ts-plugin": true,
+  "python.formatting.autopep8Path": "/Users/dannyvelasquez/Library/Python/3.8/bin/autopep8"
 }
