@@ -17,8 +17,11 @@ endif
     Plug 'leafOfTree/vim-svelte-plugin'
     Plug 'nbouscal/vim-stylish-haskell'
     Plug 'Glench/Vim-Jinja2-Syntax'
+    Plug 'tpope/vim-surround'
     " clojure
-    Plug 'tpope/vim-fireplace'
+    Plug 'Olical/conjure'
+    Plug 'guns/vim-sexp'
+    Plug 'tpope/vim-sexp-mappings-for-regular-people'
     Plug 'kien/rainbow_parentheses.vim'
     " Telescope
     Plug 'nvim-lua/plenary.nvim'
@@ -76,6 +79,14 @@ endif
 
     map s <Plug>Sneak_s
     map S <Plug>Sneak_S
+
+  " vim-surrond
+    let g:surround_no_mappings= 1
+    xmap z <Plug>VSurround
+    nmap yzz <Plug>Yssurround
+    nmap yz  <Plug>Ysurround
+    nmap dz  <Plug>Dsurround
+    nmap cz  <Plug>Csurround
 
 " Theme
   colorscheme gruvbox
