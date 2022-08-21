@@ -37,6 +37,19 @@
           "directory": "/tmp/ccls"
         }
       }
+    },
+    "clojure-lsp": {
+      "command": "clojure-lsp",
+      "filetypes": ["clojure"],
+      "rootPatterns": ["project.clj", "deps.edn"],
+      "additionalSchemes": ["jar", "zipfile"],
+      "trace.server": "verbose",
+      "diagnostic.showUnused": true,
+      "diagnostic.showDeprecated": true,
+      "diagnostic.highlightPriority": 1000000,
+      "initializationOptions": {
+        "ignore-classpath-directories": true
+      }
     }
   },
   "coc.preferences.formatOnSaveFiletypes": [
@@ -50,7 +63,8 @@
     "c",
     "scala",
     "python",
-    "go"
+    "go",
+    "clojure"
   ],
   "typescript.format.enabled": false,
   "java.home": "/usr/lib/jvm/java-11-openjdk",
