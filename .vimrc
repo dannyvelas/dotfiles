@@ -16,6 +16,10 @@ endif
     Plug 'leafgarland/typescript-vim'
     Plug 'leafOfTree/vim-svelte-plugin'
     Plug 'nbouscal/vim-stylish-haskell'
+    Plug 'Glench/Vim-Jinja2-Syntax'
+    " clojure
+    Plug 'tpope/vim-fireplace'
+    Plug 'kien/rainbow_parentheses.vim'
     " Telescope
     Plug 'nvim-lua/plenary.nvim'
     Plug 'nvim-telescope/telescope.nvim'
