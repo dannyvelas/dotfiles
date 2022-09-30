@@ -246,13 +246,6 @@ endif
   " ts react
     autocmd BufNewFile,BufReadPost *.tsx setlocal filetype=typescript.tsx
 
-  " format text
-    augroup formattxt
-      autocmd BufNewFile,BufReadPost *.txt setlocal wrap | setlocal breakindent | setlocal linebreak | setlocal breakindentopt=shift:2,min:40
-      autocmd BufNewFile,BufReadPost *.txt nnoremap <buffer> <expr> j v:count == 0 ? 'gj' : "\<Esc>".v:count.'j'
-      autocmd BufNewFile,BufReadPost *.txt nnoremap <buffer> <expr> k v:count == 0 ? 'gk' : "\<Esc>".v:count.'k'
-    augroup end
-
   " format Markdown
     augroup formatmd
       autocmd BufNewFile,BufReadPost *.md setlocal wrap | setlocal breakindent | setlocal linebreak | setlocal breakindentopt=shift:2,min:40
