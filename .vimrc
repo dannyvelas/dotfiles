@@ -13,6 +13,7 @@ endif
     Plug 'tpope/vim-abolish'
     Plug 'godlygeek/tabular'
     Plug 'prettier/vim-prettier'
+    Plug 'bkad/CamelCaseMotion'
     Plug 'leafgarland/typescript-vim'
     Plug 'leafOfTree/vim-svelte-plugin'
     Plug 'nbouscal/vim-stylish-haskell'
@@ -67,6 +68,9 @@ endif
     let g:prettier#quickfix_enabled = 0
     let g:prettier#autoformat_require_pragma = 0
     au BufWritePre *.css,*.svelte,*.pcss,*.html,*.ts,*.js,*.json PrettierAsync
+
+  " camel-case motion
+    let g:camelcasemotion_key = '<leader>'
 
   " fugitive
     nnoremap <silent> <leader>g :vertical rightbelow G<CR>
