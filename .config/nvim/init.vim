@@ -5,7 +5,7 @@ source ~/.vimrc
 
 " Telescope
   " Buffers
-    nnoremap <silent> <leader>b :lua require('telescope.builtin').buffers()<CR>
+    nnoremap <silent> <leader>tb :lua require('telescope.builtin').buffers()<CR>
 
   " File Search
     " regular
