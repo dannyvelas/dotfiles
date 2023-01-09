@@ -259,6 +259,9 @@ endif
       autocmd BufNewFile,BufReadPost *.md setlocal spell spelllang=en_us
     augroup end
 
+  " golang
+    autocmd BufNewFile,BufReadPost *.go set noexpandtab
+
   " fish
     autocmd BufNewFile,BufReadPost *.fish setlocal tabstop=4 | setlocal shiftwidth=4
 
