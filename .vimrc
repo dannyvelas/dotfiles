@@ -19,6 +19,7 @@ endif
     Plug 'nbouscal/vim-stylish-haskell'
     Plug 'Glench/Vim-Jinja2-Syntax'
     Plug 'tpope/vim-surround'
+    Plug 'bfrg/vim-jq'
     " clojure
     Plug 'Olical/conjure'
     Plug 'guns/vim-sexp'
