@@ -20,6 +20,7 @@ endif
     Plug 'Glench/Vim-Jinja2-Syntax'
     Plug 'tpope/vim-surround'
     Plug 'bfrg/vim-jq'
+    Plug 'wuelnerdotexe/vim-astro'
     " clojure
     Plug 'Olical/conjure'
     Plug 'guns/vim-sexp'
@@ -68,7 +69,7 @@ endif
   " prettier
     let g:prettier#quickfix_enabled = 0
     let g:prettier#autoformat_require_pragma = 0
-    au BufWritePre *.css,*.svelte,*.pcss,*.html,*.ts,*.js,*.json PrettierAsync
+    au BufWritePre *.css,*.svelte,*.pcss,*.html,*.ts,*.js,*.json,*.astro PrettierAsync
 
   " camel-case motion
     let g:camelcasemotion_key = '<leader>'
