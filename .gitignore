@@ -23,6 +23,9 @@
 !.vim/autoload/
 !.vim/autoload/plug.vim
 
+!.emacs.d/
+!.emacs.d/init.el
+
 !.tmux.conf
 
 !.bin/
