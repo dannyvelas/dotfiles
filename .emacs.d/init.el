@@ -75,25 +75,8 @@
 ;; make soft-wrapped lines preserve the bulleted-indentation of the previous line
 (add-hook 'text-mode-hook 'adaptive-wrap-prefix-mode)
 
-;; org-mode by default does not differentiate 
-;; bullet point levels by the amount of beginning indentation.
-;; it only differentiates by the amount of
-;; bullet point stars. this can get hard to read if bullet points
-;; are very long and wrap.
-;; This setting lets us create a new bullet point sub-level
-;; by inserting n+1 stars (where n is the amount of stars
-;; of the previous level and org mode will add
-;; beginning indentation so that its visually easy to
-;; discern between bullet point levels.
-;; this is "hard-indentation" which means that the raw ascii-text file
-;; will have indentation.
-;; there is a way to do soft-indentation, which will make the org
-;; file look indented, but not the raw ascii file.
-;; i chose for to do hard-indentation for portability
-;; https://orgmode.org/manual/Hard-indentation.html
-(setq org-adapt-indentation t
-      org-hide-leading-stars t
-      org-odd-levels-only t)
+;; hide leading stars visually, looks a bit cleaner this way
+(setq org-hide-leading-stars t)
 ;;;;;;;;;;;; end text files ;;;;;;;;;;;;;
 
 
