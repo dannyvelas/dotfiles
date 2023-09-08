@@ -72,11 +72,11 @@
 ;; https://emacs.stackexchange.com/questions/19629/word-wrap-line-option-by-default
 ;; https://superuser.com/questions/299886/linewrap-in-org-mode-of-emacs
 (add-hook 'text-mode-hook 'visual-line-mode)
-;; make soft-wrapped lines preserve the bulleted-indentation of the previous line
-(add-hook 'text-mode-hook 'adaptive-wrap-prefix-mode)
 
-;; hide leading stars visually, looks a bit cleaner this way
-(setq org-hide-leading-stars t)
+
+;; make emacs give the illusion that child bullet points are indented
+;; with this, adaptive-wrap-prefix-mode is not needed
+(add-hook 'org-mode-hook 'org-indent-mode)
 ;;;;;;;;;;;; end text files ;;;;;;;;;;;;;
 
 
