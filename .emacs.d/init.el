@@ -66,17 +66,35 @@
 
 ;;;;;;;;;;;; for text files ;;;;;;;;;;;;;
 
-;; make lines wrap, without splitting words 
+;; make lines wrap, without splitting words. text-mode-hook affects org-mode 
+;; org-mode does not soft wrap by default so this setting is needed
 ;; https://www.inmotionhosting.com/support/edu/software/how-to-wrap-text-in-emacs/
 ;; https://emacs.stackexchange.com/questions/19629/word-wrap-line-option-by-default
+;; https://superuser.com/questions/299886/linewrap-in-org-mode-of-emacs
 (add-hook 'text-mode-hook 'visual-line-mode)
+;; make soft-wrapped lines preserve the bulleted-indentation of the previous line
 (add-hook 'text-mode-hook 'adaptive-wrap-prefix-mode)
 
-;; make soft-wrapped lines preserve the bulleted-indentation of the previous line
-(use-package adaptive-wrap)
-(setq adaptive-wrap-extra-indent 0)
-(add-hook 'org-mode-hook 'adaptive-wrap-prefix-mode)
-
+;; org-mode by default does not differentiate 
+;; bullet point levels by the amount of beginning
+;; indentation.
+;; it only differentiates by the amount of
+;; bullet point stars. this can get hard to read if bullet points
+;; are very long and wrap
+;; this setting lets us create a new bullet point sub-level
+;; by inserting n+1 stars (where n is the amount of stars
+;; of the previous level and org mode will add
+;; beginning indentation so that its visually easy to
+;; discern between bullet point levels.
+;; this is "hard-indentation" which means that the raw ascii-text file
+;; will have indentation.
+;; there is a way to do soft-indentation, which will make the org
+;; file look indented, but not the raw ascii file.
+;; i chose for to do hard-indentation for portability
+;; https://orgmode.org/manual/Hard-indentation.html
+(setq org-adapt-indentation t
+      org-hide-leading-stars t
+      org-odd-levels-only t)
 ;;;;;;;;;;;; end text files ;;;;;;;;;;;;;
 
 
