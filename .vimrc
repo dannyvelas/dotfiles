@@ -112,7 +112,6 @@ endif
   set number relativenumber
   set autoindent
   set smartindent
-  set virtualedit=onemore
   set nohlsearch
   set foldmethod=indent
   set clipboard+=unnamedplus
@@ -147,32 +146,10 @@ endif
     "move current line to EO prev line
     nnoremap _ ^"_d0i<Bs>
 
-    "yank entire file
-    nnoremap <silent> YY :%y+<CR>
-
-    "automatically choose file for new pane
-    nnoremap <C-w>v <C-w>v<C-w>l:
-    nnoremap <C-w>s <C-w>s<C-w>j:
-
     "restart syntax highlighting
     nnoremap <silent> ++ :syn sync fromstart<CR>
 
-    " normal mode save
-    nnoremap <C-s> :w<CR>
-
-    " quick search and replace
-    nnoremap gs :%s/
-
-    " turn off full page scroll
-    nnoremap <C-f>  <Nop>
-
   " insert mode bindings
-    "escape
-    inoremap <C-[> <Esc>l
-
-    " escape and save
-    inoremap <C-s> <Esc>l:w<CR>
-
     " move current line to EO prev line
     inoremap ,e <Esc>^"_d0i<Bs>
 
@@ -182,17 +159,10 @@ endif
     " avoid accidentally pasting text
     inoremap <C-space> <space>
 
-    " insert-mode move up and down
-    inoremap <C-j> <C-o>j
-    inoremap <C-k> <C-o>k
-
     " shift insert mode
     inoremap <C-t> <C-d>
     inoremap <C-y> <C-t>
     
-    " copy character below
-    inoremap <C-c> <C-e>
-
     " diagraphs
     inoremap <C-\> <C-k>
 
