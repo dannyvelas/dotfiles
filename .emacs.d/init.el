@@ -76,12 +76,11 @@
 (add-hook 'text-mode-hook 'adaptive-wrap-prefix-mode)
 
 ;; org-mode by default does not differentiate 
-;; bullet point levels by the amount of beginning
-;; indentation.
+;; bullet point levels by the amount of beginning indentation.
 ;; it only differentiates by the amount of
 ;; bullet point stars. this can get hard to read if bullet points
-;; are very long and wrap
-;; this setting lets us create a new bullet point sub-level
+;; are very long and wrap.
+;; This setting lets us create a new bullet point sub-level
 ;; by inserting n+1 stars (where n is the amount of stars
 ;; of the previous level and org mode will add
 ;; beginning indentation so that its visually easy to
@@ -119,6 +118,8 @@
 
 ;; make c-o work again
 (define-key evil-insert-state-map (kbd "C-o") 'evil-execute-in-normal-state)
+;; make c-w work again
+(define-key evil-insert-state-map (kbd "C-w") 'evil-delete-backward-word)
 
 ;; make d/D/c/C/p/P/x/X delete in normal/visual mode without copying to clipboard
 ;; https://stackoverflow.com/questions/37787393/change-dd-command-in-evil-mode-to-not-write-to-clipboard
