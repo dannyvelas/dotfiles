@@ -40,7 +40,7 @@
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
    '("7b8f5bbdc7c316ee62f271acf6bcd0e0b8a272fdffe908f8c920b0ba34871d98" default))
- '(package-selected-packages '(evil-snipe gruvbox-theme evil)))
+ '(package-selected-packages '(magit evil-snipe gruvbox-theme evil)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -72,7 +72,6 @@
 ;; https://emacs.stackexchange.com/questions/19629/word-wrap-line-option-by-default
 ;; https://superuser.com/questions/299886/linewrap-in-org-mode-of-emacs
 (add-hook 'text-mode-hook 'visual-line-mode)
-
 
 ;; make emacs give the illusion that child bullet points are indented
 ;; with this, adaptive-wrap-prefix-mode is not needed
@@ -114,4 +113,7 @@
 (define-key evil-insert-state-map (kbd "C-t") 'evil-shift-left-line)
 (define-key evil-insert-state-map (kbd "C-y") 'evil-shift-right-line)
 
+;; make \g open magit
+(evil-set-leader 'normal (kbd "\\") nil)
+(global-set-key (kbd "<leader>g") 'magit-status)
 ;;;;;;;;;;;;;; end vim stuff ;;;;;;;;;;;;;;;;
