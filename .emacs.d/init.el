@@ -62,6 +62,8 @@
 ;; disable tool-bar
 (tool-bar-mode -1)
 
+;; make "o" open the current buffer in the current window, instead of a new window
+(define-key Buffer-menu-mode-map "o" 'Buffer-menu-this-window)
 ;;;;;;;;;;;; End Emacs Settings ;;;;;;;;;
 
 ;;;;;;;;;;;; for text files ;;;;;;;;;;;;;
