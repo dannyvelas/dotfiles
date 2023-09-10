@@ -46,7 +46,7 @@
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
    '("7b8f5bbdc7c316ee62f271acf6bcd0e0b8a272fdffe908f8c920b0ba34871d98" default))
- '(package-selected-packages '(evil-collection magit evil-snipe gruvbox-theme evil)))
+ '(package-selected-packages '(evil-snipe gruvbox-theme evil)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -119,12 +119,4 @@
 (defun bb/evil-delete (orig-fn beg end &optional type _ &rest args)
     (apply orig-fn beg end type ?_ args))
 (advice-add 'evil-delete :around 'bb/evil-delete)
-
-;; make c-t and c-y shift the current line left and right, respectively in insert-mode
-(define-key evil-insert-state-map (kbd "C-t") 'evil-shift-left-line)
-(define-key evil-insert-state-map (kbd "C-y") 'evil-shift-right-line)
-
-;; make \g open magit
-(evil-set-leader 'normal (kbd "\\") nil)
-(global-set-key (kbd "<leader>g") 'magit-status)
 ;;;;;;;;;;;;;; end vim stuff ;;;;;;;;;;;;;;;;
