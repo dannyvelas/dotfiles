@@ -13,8 +13,14 @@
 ;; evil-disable-insert-state-bindings makes sure that readline emacs bindings
 ;; are available like c-p, c-n, c-d. however it turns off c-o, which we want. this will be added later
 (setq evil-disable-insert-state-bindings t)
+;; this is necessary to allow c-r to work to redo
 (setq evil-undo-system 'undo-redo)
+;; these two options below are required by evil-collection
+(setq evil-want-integration t) ;; This is optional since it's already set to t by default.
+(setq evil-want-keybinding nil)
 (require 'evil)
+(when (require 'evil-collection nil t)
+  (evil-collection-init))
 (evil-mode 1)
 
 (require 'evil-snipe)
@@ -40,7 +46,7 @@
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
    '("7b8f5bbdc7c316ee62f271acf6bcd0e0b8a272fdffe908f8c920b0ba34871d98" default))
- '(package-selected-packages '(magit evil-snipe gruvbox-theme evil)))
+ '(package-selected-packages '(evil-collection magit evil-snipe gruvbox-theme evil)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -58,6 +64,9 @@
 ;; make font bigger
 (set-face-attribute 'default nil :height 200)
 (add-to-list 'default-frame-alist '(font . "Fira Code"))
+
+;; make windows split by default vertically by reducing the minimum width required of a split 
+(setq split-width-threshold 50) 
 
 ;; disable tool-bar
 (tool-bar-mode -1)
