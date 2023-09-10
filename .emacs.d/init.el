@@ -73,15 +73,6 @@
 
 ;; make "o" open the current buffer in the current window, instead of a new window
 (define-key Buffer-menu-mode-map "o" 'Buffer-menu-this-window)
-
-(evil-set-leader 'normal (kbd "\\") nil)
-(global-set-key (kbd "<leader>g")
-  (lambda ()
-    (interactive)
-    (evil-window-split)
-    (evil-window-down 1)
-    (ansi-term "/usr/local/bin/fish")
-    ))
 ;;;;;;;;;;;; End Emacs Settings ;;;;;;;;;
 
 ;;;;;;;;;;;; for text files ;;;;;;;;;;;;;
