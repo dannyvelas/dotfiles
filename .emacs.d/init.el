@@ -68,7 +68,8 @@
 ;; make windows split by default vertically by reducing the minimum width required of a split 
 (setq split-width-threshold 50) 
 
-;; disable tool-bar
+;; disable menu-bar and tool-bar
+(menu-bar-mode -1)
 (tool-bar-mode -1)
 
 ;; make "o" open the current buffer in the current window, instead of a new window
@@ -120,3 +121,8 @@
     (apply orig-fn beg end type ?_ args))
 (advice-add 'evil-delete :around 'bb/evil-delete)
 ;;;;;;;;;;;;;; end vim stuff ;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;; spelling ;;;;;;;;;;;;;;;;;;;;;
+(setq-default ispell-program-name "hunspell")
+(add-hook 'org-mode-hook 'turn-on-flyspell)
+;;;;;;;;;;;;;; end spelling ;;;;;;;;;;;;;;;;;
