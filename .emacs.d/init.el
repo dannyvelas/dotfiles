@@ -88,6 +88,14 @@
 ;; make emacs give the illusion that child bullet points are indented
 ;; with this, adaptive-wrap-prefix-mode is not needed
 (add-hook 'org-mode-hook 'org-indent-mode)
+
+;; make c-t and c-y shift the current line left and right, respectively in insert-mode
+(define-key evil-insert-state-map (kbd "C-t") 'org-promote-subtree)
+(define-key evil-insert-state-map (kbd "C-y") 'org-demote-subtree)
+
+;; spelling
+(setq-default ispell-program-name "hunspell")
+(add-hook 'org-mode-hook 'turn-on-flyspell)
 ;;;;;;;;;;;; end text files ;;;;;;;;;;;;;
 
 
@@ -121,8 +129,3 @@
     (apply orig-fn beg end type ?_ args))
 (advice-add 'evil-delete :around 'bb/evil-delete)
 ;;;;;;;;;;;;;; end vim stuff ;;;;;;;;;;;;;;;;
-
-;;;;;;;;;;;;;; spelling ;;;;;;;;;;;;;;;;;;;;;
-(setq-default ispell-program-name "hunspell")
-(add-hook 'org-mode-hook 'turn-on-flyspell)
-;;;;;;;;;;;;;; end spelling ;;;;;;;;;;;;;;;;;
