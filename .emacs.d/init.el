@@ -46,7 +46,7 @@
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
    '("7b8f5bbdc7c316ee62f271acf6bcd0e0b8a272fdffe908f8c920b0ba34871d98" default))
- '(package-selected-packages '(evil-snipe gruvbox-theme evil)))
+ '(package-selected-packages '(org-bullets evil-snipe gruvbox-theme evil)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -96,6 +96,18 @@
 ;; spelling
 (setq-default ispell-program-name "hunspell")
 (add-hook 'org-mode-hook 'turn-on-flyspell)
+
+;; Zc will close the current subtree i'm on and only show the parent
+(defun org-fold-outer ()
+  (interactive)
+  (org-beginning-of-line)
+  (if (string-match "^*+" (thing-at-point 'line t))
+      (outline-up-heading 1))
+  (outline-hide-subtree))
+(define-key evil-normal-state-map (kbd "Zc") 'org-fold-outer)
+
+(require 'org-bullets)
+(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 ;;;;;;;;;;;; end text files ;;;;;;;;;;;;;
 
 
