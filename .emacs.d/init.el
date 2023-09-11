@@ -64,11 +64,13 @@
 (setq split-width-threshold 50) 
 
 ;; disable menu-bar and tool-bar
+;; https://kb.mit.edu/confluence/display/istcontrib/Disabling+the+Emacs+menubar%2C+toolbar%2C+or+scrollbar
 (menu-bar-mode -1)
 (tool-bar-mode -1)
+(scroll-bar-mode -1)
 
-;; make "o" open the current buffer in the current window, instead of a new window
-(define-key Buffer-menu-mode-map "o" 'Buffer-menu-this-window)
+;; make "RET" open the current buffer in the current window, instead of a new window
+(define-key Buffer-menu-mode-map (kbd "<return>") 'Buffer-menu-this-window)
 ;;;;;;;;;;;; End Emacs Settings ;;;;;;;;;
 
 ;;;;;;;;;;;; for text files ;;;;;;;;;;;;;
