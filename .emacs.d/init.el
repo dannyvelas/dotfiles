@@ -15,12 +15,7 @@
 (setq evil-disable-insert-state-bindings t)
 ;; this is necessary to allow c-r to work to redo
 (setq evil-undo-system 'undo-redo)
-;; these two options below are required by evil-collection
-(setq evil-want-integration t) ;; This is optional since it's already set to t by default.
-(setq evil-want-keybinding nil)
 (require 'evil)
-(when (require 'evil-collection nil t)
-  (evil-collection-init))
 (evil-mode 1)
 
 (require 'evil-snipe)
