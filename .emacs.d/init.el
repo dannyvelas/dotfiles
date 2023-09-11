@@ -106,8 +106,12 @@
   (outline-hide-subtree))
 (define-key evil-normal-state-map (kbd "Zc") 'org-fold-outer)
 
+;; make org mode bullets pretty
 (require 'org-bullets)
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+
+;; make the folds under headings pretty
+(setq org-ellipsis " ▼ ")
 ;;;;;;;;;;;; end text files ;;;;;;;;;;;;;
 
 
