@@ -18,8 +18,9 @@
 (require 'evil)
 (evil-mode 1)
 
-(require 'evil-snipe)
-(setq evil-snipe-scope 'whole-visible)
+;; this package is like vim-sneak, allows you to jump to a two-char combo before/after the cursor
+(require 'evil-snipe) 
+(setq evil-snipe-scope 'whole-visible) ;; only allow jumping to visible sections of buffer
 (evil-snipe-mode +1)
 (evil-snipe-override-mode +1)
 ;;;;;;;;;;;; End Plugins ;;;;;;;;;;;;;;;; 
@@ -72,6 +73,8 @@
 
 ;; make "RET" open the current buffer in the current window, instead of a new window
 (define-key Buffer-menu-mode-map (kbd "<return>") 'Buffer-menu-this-window)
+
+(setq backup-directory-alist `(("." . "~/.saves")))
 ;;;;;;;;;;;; End Emacs Settings ;;;;;;;;;
 
 ;;;;;;;;;;;; for text files ;;;;;;;;;;;;;
