@@ -155,6 +155,7 @@
   (ivy-mode 1)
   :config
   (setq ivy-use-virtual-buffers t)
+  (setq ivy-wrap t) ;; if you are scrolling through results and reach the bottom/top loop back to the top/bottom, respectively
   (setq ivy-count-format "(%d/%d) "))
 
 ;; add projectile: a package that can be used to navigate projects, using ivy
