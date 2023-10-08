@@ -41,7 +41,7 @@
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
    '("02f57ef0a20b7f61adce51445b68b2a7e832648ce2e7efb19d217b6454c1b644" "e3daa8f18440301f3e54f2093fe15f4fe951986a8628e98dcd781efbec7a46f2" "7b8f5bbdc7c316ee62f271acf6bcd0e0b8a272fdffe908f8c920b0ba34871d98" default))
- '(package-selected-packages '(doom-themes org-bullets evil-snipe evil)))
+ '(package-selected-packages '(counsel doom-themes org-bullets evil-snipe evil)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -51,7 +51,7 @@
 
 ;; make emacs open to ~/home/Notes/Writings by default
 ;; https://emacs.stackexchange.com/questions/73713/open-file-at-startup-from-init-file
-(add-hook 'server-after-make-frame-hook (lambda () (find-file "~/home/Notes/Writings")))
+(add-hook 'server-after-make-frame-hook (lambda () (find-file "~/RemoteGit/MyGithub/Notes")))
 
 ;; use gruvbox theme
 (load-theme 'doom-gruvbox)
@@ -141,4 +141,15 @@
 (defun bb/evil-delete (orig-fn beg end &optional type _ &rest args)
     (apply orig-fn beg end type ?_ args))
 (advice-add 'evil-delete :around 'bb/evil-delete)
+
+;; make escape behave like it does in vim
+(global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 ;;;;;;;;;;;;;; end vim stuff ;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;; file navigation ;;;;;;;;;;;;;;
+(use-package ivy
+  :init
+  (ivy-mode 1)
+  :config
+  (setq ivy-use-virtual-buffers t)
+  (setq ivy-count-format "(%d/%d) "))
