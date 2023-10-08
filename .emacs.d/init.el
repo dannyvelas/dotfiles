@@ -159,5 +159,6 @@
 
 ;; add projectile: a package that can be used to navigate projects, using ivy
 (require 'projectile)
-(define-key projectile-mode-map (kbd "\\") 'projectile-command-map)
+(define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
 (setq projectile-completion-system 'ivy)
+(projectile-mode 1)
