@@ -113,6 +113,9 @@
 
 ;; make the folds under headings pretty
 (setq org-ellipsis " ▼ ")
+
+;; make markdown export mode appear in org mode
+(require 'ox-md nil t)
 ;;;;;;;;;;;; end text files ;;;;;;;;;;;;;
 
 
