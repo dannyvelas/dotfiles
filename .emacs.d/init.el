@@ -43,7 +43,7 @@
  '(custom-safe-themes
    '("02f57ef0a20b7f61adce51445b68b2a7e832648ce2e7efb19d217b6454c1b644" "e3daa8f18440301f3e54f2093fe15f4fe951986a8628e98dcd781efbec7a46f2" "7b8f5bbdc7c316ee62f271acf6bcd0e0b8a272fdffe908f8c920b0ba34871d98" default))
  '(package-selected-packages
-   '(projectile counsel doom-themes org-bullets evil-snipe evil)))
+   '(ox-gfm projectile counsel doom-themes org-bullets evil-snipe evil)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -116,6 +116,10 @@
 
 ;; make markdown export mode appear in org mode
 (require 'ox-md nil t)
+
+;; automatically load ox-gfm along with Org mode. this package allows me to export github-flavored markdown
+(eval-after-load "org"
+  '(require 'ox-gfm nil t))
 ;;;;;;;;;;;; end text files ;;;;;;;;;;;;;
 
 
