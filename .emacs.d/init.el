@@ -91,13 +91,21 @@
 (add-hook 'text-mode-hook 'visual-line-mode)
 
 (add-hook 'text-mode-hook 'turn-on-flyspell)
+
+;; note that this is using 'markdown-mode-hook instead of 'text-mode-hook
+;; this is because we want this setting to only apply to markdown files, not org mode files
+;; this is because org mode already has its own indenting mode called 'org-indent-mode which does
+;; a super-set of 'adaptive-wrap-prefix mode
+;; if i put 'text-mode-hook here and removed the org-indent-mode line below, org-mode stops working as intended.
+;; if i put 'text-mode-hook here, and keep the org-indent-mode line below, i'm worried both settings might conflict
+(add-hook 'markdown-mode-hook 'adaptive-wrap-prefix-mode)
 ;;;;;;;;;;;; end text files ;;;;;;;;;;;;;
 
 
 ;;;;;;;;;;;; for org mode ;;;;;;;;;;;;;;;
 
 ;; make emacs give the illusion that child bullet points are indented
-;; with this, adaptive-wrap-prefix-mode is not needed
+;; this also makes it so that child headings are nested under parent headings 
 (add-hook 'org-mode-hook 'org-indent-mode)
 
 ;; make c-t and c-y shift the current line left and right, respectively in insert-mode
