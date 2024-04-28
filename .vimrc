@@ -94,6 +94,9 @@ endif
     nmap dz  <Plug>Dsurround
     nmap cz  <Plug>Csurround
 
+  " ocaml
+    set rtp^="/Users/dannyvelasquez/.opam/default/share/ocp-indent/vim"
+
 " Theme
   colorscheme gruvbox
   set bg=dark

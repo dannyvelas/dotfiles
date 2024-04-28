@@ -27,7 +27,7 @@ function fish_user_key_bindings
 end
 
 # opam
-#source $HOME/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
+source /Users/dannyvelasquez/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
 
 # haskell
 #set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME
