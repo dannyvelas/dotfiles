@@ -5,7 +5,6 @@ endif
 " plugins
   " vim-plug
     call plug#begin()
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'morhetz/gruvbox'
     Plug 'preservim/nerdtree'
     Plug 'tpope/vim-fugitive'
@@ -44,24 +43,6 @@ endif
 
     " toggle nerdtree
     nnoremap <silent> <C-t> :NERDTreeToggle<CR>
-
-  " coc
-    " trigger suggestions
-    inoremap <silent><expr> <C-space> coc#refresh()
-
-    " select suggestions with tab
-    inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-    inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
-    "jump to next error
-    nmap <silent> ]g <Plug>(coc-diagnostic-next)
-    nmap <silent> [g <Plug>(coc-diagnostic-prev)
-    
-    " auto-format elm files on save
-    autocmd BufWritePost *.elm :call CocAction('format')
-
-    " jump to floating error messages window
-    nnoremap <silent> <C-w>p :call coc#float#jump()<CR>
 
   " vim-svelte-plugin
     let g:vim_svelte_plugin_use_typescript = 1
