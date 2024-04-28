@@ -29,6 +29,8 @@ endif
     Plug 'nvim-lua/plenary.nvim'
     Plug 'nvim-telescope/telescope.nvim'
     Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+    " lsp stuff
+    Plug 'neovim/nvim-lspconfig'
     call plug#end()
 
   " nerdtree
