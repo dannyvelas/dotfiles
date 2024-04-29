@@ -49,6 +49,7 @@ require("lazy").setup({
         dependencies = {
             "williamboman/mason.nvim",
             "nvimtools/none-ls.nvim",
+            "nvim-lua/plenary.nvim",
         },
         config = function()
             -- Note:
