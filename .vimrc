@@ -30,7 +30,11 @@ endif
     Plug 'nvim-telescope/telescope.nvim'
     Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
     " lsp stuff
+    Plug 'L3MON4D3/LuaSnip'
     Plug 'neovim/nvim-lspconfig'
+    Plug 'hrsh7th/nvim-cmp'
+    Plug 'hrsh7th/cmp-nvim-lsp'
+    Plug 'hrsh7th/cmp-buffer'
     call plug#end()
 
   " nerdtree
@@ -61,6 +65,7 @@ endif
     nnoremap <silent> <leader>g :vertical rightbelow G<CR>
 
   " vim-sneak
+    "nnoremap <silent> ff <cmd>lua vim.lsp.buf.formatting()<CR>
     map f <Plug>Sneak_f
     map F <Plug>Sneak_F
     map t <Plug>Sneak_t
