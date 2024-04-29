@@ -24,13 +24,23 @@ vim.keymap.set('v', 'P', '"_dP', opts)
 vim.keymap.set('v', 'p', '"_dp', opts)
 
 -- readline bindings
-vim.keymap.set('i', '<C-A>', '<C-O>^')
-vim.keymap.set('c', '<C-A>', '<Home>')
+vim.keymap.set('i', '<C-A>', '<C-O>^', opts) -- front of line insert mode
+vim.keymap.set('i', '<C-e>', '<End>', opts) -- end of line insert mode (command mode is not needed bc it already works out the box)
+vim.keymap.set('i', '<C-D>', '<Delete>', opts) -- delete at point insert mode
+vim.keymap.set('i', '<C-f>', '<Right>', opts) -- move cursor to the right insert mode. note: we will add this to command mode below
 
--- both insert and command mode
-vim.keymap.set('!', '<C-X><C-A>', '<C-A>')
-vim.keymap.set('!', '<C-B>', '<Left>')
-vim.keymap.set('!', '<C-D>', '<Delete>')
+--vim.cmd "cnoremap <C-f> <Right>"
+vim.keymap.set('c', '<C-f>', function() return "<Right>" end, { noremap = true, expr = true })
+--vim.keymap.set('c', '<C-A>', '<Home>', opts) --front of line command mode
+----vim.keymap.set('c', '<C-f>', "getcmdpos()>strlen(getcmdline()) ? &cedit : '<Lt>Right>'", { noremap = true, silent = true, expr = true }) -- if at EOL, open command history, otherwise move right
+--vim.keymap.set('!', '<C-B>', '<Left>', opts) -- move cursor to the left insert mode and command mode
+--
+--
+---- in command mode, <C-A> was set to move the cursor to the beginning of line
+---- but <C-A> was doing something else before, (pasting out all of the options into the command line)
+---- we still want that functionality
+---- so, lets do <C-X><C-A> when we want that functionalality
+--vim.keymap.set('c', '<C-X><C-A>', '<C-A>')
 
 -----------------
 -- Normal mode --
@@ -49,6 +59,8 @@ vim.keymap.set('n', '<leader>g', ':vertical rightbelow G<CR>', opts)
 -- shortcut to merge text of line with end of previous line
 vim.keymap.set('i', ',e', '<Esc>^"_d0i<Bs>', opts)
 
+-- digraphs
+vim.keymap.set('i', '<C-\\>', '<C-k>', opts)
 
 -- i'd rather use c-d as a readline binding for deleting at point than shifting left
 -- so, i'll make c-t inherit the behavior of c-d
