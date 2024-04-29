@@ -16,6 +16,9 @@
 !.config/nvim/
 !.config/nvim/*
 !.config/nvim/UltiSnips/*
+!.config/nvim/after/
+!.config/nvim/after/plugin/
+!.config/nvim/after/plugin/*
 
 !.vimrc
 !.vim/
