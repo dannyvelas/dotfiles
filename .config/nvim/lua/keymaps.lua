@@ -30,6 +30,7 @@ vim.keymap.set('i', '<C-A>', '<C-O>^', opts) -- front of line insert mode
 vim.keymap.set('i', '<C-e>', '<End>', opts) -- end of line insert mode (command mode is not needed bc it already works out the box)
 vim.keymap.set('i', '<C-D>', '<Delete>', opts) -- delete at point insert mode
 vim.keymap.set('i', '<C-f>', '<Right>', opts) -- move cursor to the right insert mode. note: we will add this to command mode below
+vim.keymap.set('i', '<C-b>', '<Left>', opts)
 
 -- TODO: add support for opening cmd history pane if cursor is at EOL
 -- NOTE: when i add silent=true, this stops working
@@ -42,6 +43,16 @@ vim.keymap.set('c', '<C-B>', function() return '<Left>' end, { noremap = true, e
 -- we still want that functionality
 -- so, lets do <C-X><C-A> when we want that functionalality
 vim.keymap.set('c', '<C-X><C-A>', '<C-A>')
+
+vim.cmd 'cnoremap <C-k> <c-\\>egetcmdline()[:getcmdpos()-2]<CR>' -- delete everything past point. TODO: translate this to lua
+
+-- meta key bindings insert mode
+vim.keymap.set('i', '<M-b>', '<S-Left>', opts)
+-- meta key bindings command mode
+vim.keymap.set('c', '<M-b>', function() return '<S-Left>' end, { noremap = true, expr = true })
+vim.keymap.set('c', '<M-f>', function() return '<S-Right>' end, { noremap = true, expr = true })
+vim.keymap.set('c', '<M-d>', function() return '<S-Right><C-W>' end, { noremap = true, expr = true })
+
 
 -----------------
 -- Normal mode --
