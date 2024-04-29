@@ -61,6 +61,8 @@ vim.keymap.set('c', '<M-d>', function() return '<S-Right><C-W>' end, { noremap =
 -- Open fugitive menu
 vim.keymap.set('n', '<leader>g', ':vertical rightbelow G<CR>', opts)
 
+vim.keymap.set('n', '<C-t>', ':NvimTreeToggle<CR>', opts)
+
 -----------------
 -- Visual mode --
 -----------------
