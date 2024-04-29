@@ -25,8 +25,11 @@ vim.opt.smartcase = true            -- but make it case sensitive if an uppercas
 --------------------------------------------------------------------------------------------------------------------------------------------------------------
 -- these configs were only on https://github.com/MartinLwx/dotfiles/blob/394a8cc9dc95c3cbbd0eff014943c7228a545f14/nvim/lua/options.lua and NOT on my .vimrc --
 --------------------------------------------------------------------------------------------------------------------------------------------------------------
-vim.opt.completeopt = {'menu', 'menuone', 'noselect'}
---vim.opt.cursorline = true           -- highlight cursor line underneath the cursor horizontally
+-- these options are for for the completion menu when you're in insert mode. 
+-- menu shows a popup menu to show the possible completions
+-- menuone makes sure that that menu comes up, even when there is only one matche
+vim.opt.completeopt = {'menu', 'menuone' } 
+vim.opt.cursorline = true           -- highlight cursor line underneath the cursor horizontally
 vim.opt.splitbelow = true           -- open new vertical split bottom
 vim.opt.termguicolors = true        -- enable 24-bit RGB color in the TUI
 
