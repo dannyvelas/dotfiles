@@ -17,6 +17,8 @@
 !.config/nvim/*
 !.config/nvim/lua/
 !.config/nvim/lua/*
+!.config/nvim/lua/config/
+!.config/nvim/lua/config/*
 !.config/nvim/after/
 !.config/nvim/after/plugin/
 !.config/nvim/after/plugin/*
