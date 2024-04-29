@@ -44,7 +44,8 @@ vim.keymap.set('c', '<C-B>', function() return '<Left>' end, { noremap = true, e
 -- so, lets do <C-X><C-A> when we want that functionalality
 vim.keymap.set('c', '<C-X><C-A>', '<C-A>')
 
-vim.cmd 'cnoremap <C-k> <c-\\>egetcmdline()[:getcmdpos()-2]<CR>' -- delete everything past point. TODO: translate this to lua
+-- TODO: translate this to lua
+vim.cmd 'cnoremap <C-k> <c-\\>egetcmdline()[:getcmdpos()-2]<CR>' -- delete everything past point. 
 
 -- meta key bindings insert mode
 vim.keymap.set('i', '<M-b>', '<S-Left>', opts)
@@ -61,11 +62,8 @@ vim.keymap.set('c', '<M-d>', function() return '<S-Right><C-W>' end, { noremap =
 -- Open fugitive menu
 vim.keymap.set('n', '<leader>g', ':vertical rightbelow G<CR>', opts)
 
+-- open file explorer
 vim.keymap.set('n', '<C-t>', ':NvimTreeToggle<CR>', opts)
-
------------------
--- Visual mode --
------------------
 
 -----------------
 -- Insert mode --
