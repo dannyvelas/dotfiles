@@ -29,6 +29,7 @@ vim.opt.smartcase = true            -- but make it case sensitive if an uppercas
 -- menu shows a popup menu to show the possible completions
 -- menuone makes sure that that menu comes up, even when there is only one matche
 vim.opt.completeopt = {'menu', 'menuone' } 
+
 vim.opt.cursorline = true           -- highlight cursor line underneath the cursor horizontally
 vim.opt.splitbelow = true           -- open new vertical split bottom
 vim.opt.termguicolors = true        -- enable 24-bit RGB color in the TUI
@@ -43,3 +44,9 @@ vim.opt.smartindent = true          -- Do smart autoindenting when starting a ne
 vim.opt.foldmethod = 'indent'       -- by default, fold code by indent
 vim.opt.showcmd = true              -- allows me to see commands in status line
 vim.opt.hidden = true               -- allow me to navigate away from buffers without saving
+
+---------------
+-- nvim-tree --
+---------------
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
