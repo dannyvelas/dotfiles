@@ -70,4 +70,23 @@ require("lazy").setup({
     },
     -- Git
     "tpope/vim-fugitive",
+    {
+      "ggandor/leap.nvim",
+      config = function()
+        -- See `:h leap-custom-mappings` for more details
+        require("leap").create_default_mappings()
+      end,
+    },
+    -- file explorer
+    {
+        "nvim-tree/nvim-tree.lua",
+        version = "*",
+        lazy = false,
+        dependencies = {
+          "nvim-tree/nvim-web-devicons",
+        },
+        config = function()
+          require("nvim-tree").setup {}
+        end,
+    },
 })
