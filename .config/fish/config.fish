@@ -1,7 +1,18 @@
+# aliases
 alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
 alias rm="rm -i"
 
+# abbrevs
+abbr --add g git
+abbr --add gl git log
+abbr --add ga git add
+abbr --add gd git diff
+abbr --add gs git status
+abbr --add gco git checkout
+abbr --add gcm git commit -m
 
+
+# !$ and !! convenience
 function bind_bang
     switch (commandline -t)[-1]
         case "!"
@@ -28,6 +39,3 @@ end
 
 # opam
 source /Users/dannyvelasquez/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
-
-# haskell
-#set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME
