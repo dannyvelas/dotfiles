@@ -1,6 +1,8 @@
 *
 !.gitignore
 
+!.ocamlinit
+
 !.config/
 !.config/fish/
 !.config/fish/config.fish
