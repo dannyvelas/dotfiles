@@ -89,4 +89,11 @@ require("lazy").setup({
           require("config.nvim-tree")
         end,
     },
+    -- lang specific stuff
+    {
+      "jparise/vim-graphql",
+    },
+    {
+      "bfrg/vim-jq"
+    }
 })
