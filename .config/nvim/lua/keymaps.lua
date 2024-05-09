@@ -49,6 +49,8 @@ vim.cmd 'cnoremap <C-k> <c-\\>egetcmdline()[:getcmdpos()-2]<CR>' -- delete every
 
 -- meta key bindings insert mode
 vim.keymap.set('i', '<M-b>', '<S-Left>', opts)
+vim.keymap.set('i', '<M-f>', '<S-Right>', opts)
+vim.keymap.set('i', '<M-d>', '<C-O>dw', opts)
 -- meta key bindings command mode
 vim.keymap.set('c', '<M-b>', function() return '<S-Left>' end, { noremap = true, expr = true })
 vim.keymap.set('c', '<M-f>', function() return '<S-Right>' end, { noremap = true, expr = true })
