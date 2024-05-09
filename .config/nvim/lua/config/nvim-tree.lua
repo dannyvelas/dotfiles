@@ -10,6 +10,7 @@ local function on_attach(bufnr)
 
   -- custom mappings
   vim.keymap.set('n', '<C-t>', api.tree.close, opts('Close'))
+  vim.keymap.del('n', '<C-e>', { buffer = bufnr })
 end
 
 -- pass to setup along with your other options
