@@ -427,7 +427,7 @@ colors:
 #   - (Linux/BSD) user login shell
 #   - (Windows) powershell
 shell:
-  program: /opt/homebrew/bin/fish
+  program: /usr/local/bin/fish
 
 # Startup directory
 #
