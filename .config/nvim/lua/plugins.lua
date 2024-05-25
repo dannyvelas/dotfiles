@@ -89,6 +89,14 @@ require("lazy").setup({
           require("config.nvim-tree")
         end,
     },
+    -- prettier
+    {
+      "MunifTanjim/prettier.nvim",
+      dependencies = {
+        "neovim/nvim-lspconfig",
+        "nvimtools/none-ls.nvim",
+      }
+    },
     -- lang specific stuff
     {
       "jparise/vim-graphql",
