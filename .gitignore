@@ -1,6 +1,8 @@
 *
 !.gitignore
 
+!.ocamlinit
+
 !.config/
 !.config/fish/
 !.config/fish/config.fish
@@ -15,7 +17,13 @@
 
 !.config/nvim/
 !.config/nvim/*
-!.config/nvim/UltiSnips/*
+!.config/nvim/lua/
+!.config/nvim/lua/*
+!.config/nvim/lua/config/
+!.config/nvim/lua/config/*
+!.config/nvim/after/
+!.config/nvim/after/plugin/
+!.config/nvim/after/plugin/*
 
 !.vimrc
 !.vim/
