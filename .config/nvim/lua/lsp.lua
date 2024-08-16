@@ -104,3 +104,7 @@ lspconfig.tsserver.setup({
 lspconfig.pyright.setup({
   on_attach = on_attach
 })
+
+lspconfig.svelte.setup({
+  on_attach = on_attach
+})
