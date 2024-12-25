@@ -16,6 +16,9 @@ end
 -- pass to setup along with your other options
 require("nvim-tree").setup {
   on_attach = on_attach,
+  filters = {
+    git_ignored = false
+  },
 }
 
 -- stolen from: https://github.com/nvim-tree/nvim-tree.lua/wiki/Auto-Close#marvinth01
