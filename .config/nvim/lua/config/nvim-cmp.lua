@@ -10,51 +10,51 @@ local luasnip = require("luasnip")
 local cmp = require("cmp")
 
 cmp.setup({
-    snippet = {
-        -- REQUIRED - you must specify a snippet engine
-        expand = function(args)
-            require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-        end,
-    },
-    mapping = cmp.mapping.preset.insert({
-        -- Use <C-b/f> to scroll the docs
-        ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-        ['<C-f>'] = cmp.mapping.scroll_docs(4),
-        -- Use <CR>(Enter) to confirm selection
-        ["<CR>"] = cmp.mapping({
-           i = function(fallback)
-             if cmp.visible() and cmp.get_active_entry() then
-               cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
-             else
-               fallback()
-             end
-           end,
-           s = cmp.mapping.confirm({ select = true }),
-           c = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
-         }),
+  snippet = {
+      -- REQUIRED - you must specify a snippet engine
+      expand = function(args)
+          require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+      end,
+  },
+  mapping = cmp.mapping.preset.insert({
+      -- Use <C-b/f> to scroll the docs
+      ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+      ['<C-f>'] = cmp.mapping.scroll_docs(4),
+      -- Use <CR>(Enter) to confirm selection
+      ["<CR>"] = cmp.mapping({
+         i = function(fallback)
+           if cmp.visible() and cmp.get_active_entry() then
+             cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
+           else
+             fallback()
+           end
+         end,
+         s = cmp.mapping.confirm({ select = true }),
+         c = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
+       }),
 
-        -- A super tab
-        -- source: https://github.com/hrsh7th/nvim-cmp/wiki/Example-mappings#luasnip
-        ["<Tab>"] = cmp.mapping(function(fallback)
-            -- Hint: if the completion menu is visible select next one
-            if cmp.visible() then
-                cmp.select_next_item()
-            elseif has_words_before() then
-                cmp.complete()
-            else
-                fallback()
-            end
-        end, { "i", "s" }), -- i - insert mode; s - select mode
-        ["<S-Tab>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-                cmp.select_prev_item()
-            elseif luasnip.jumpable( -1) then
-                luasnip.jump( -1)
-            else
-                fallback()
-            end
-        end, { "i", "s" }),
-    }),
+      -- A super tab
+      -- source: https://github.com/hrsh7th/nvim-cmp/wiki/Example-mappings#luasnip
+      ["<Tab>"] = cmp.mapping(function(fallback)
+          -- Hint: if the completion menu is visible select next one
+          if cmp.visible() then
+              cmp.select_next_item()
+          elseif has_words_before() then
+              cmp.complete()
+          else
+              fallback()
+          end
+      end, { "i", "s" }), -- i - insert mode; s - select mode
+      ["<S-Tab>"] = cmp.mapping(function(fallback)
+          if cmp.visible() then
+              cmp.select_prev_item()
+          elseif luasnip.jumpable( -1) then
+              luasnip.jump( -1)
+          else
+              fallback()
+          end
+      end, { "i", "s" }),
+  }),
 
   -- Let's configure the item's appearance
   -- source: https://github.com/hrsh7th/nvim-cmp/wiki/Menu-Appearance

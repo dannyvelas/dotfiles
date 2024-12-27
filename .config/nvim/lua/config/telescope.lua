@@ -31,3 +31,11 @@ vim.keymap.set("n", "<leader>rm", builtin.live_grep, {})
 
 -- telescope on buffers
 vim.keymap.set("n", "<leader>tb", builtin.buffers, {})
+
+-- dont make telescope results fold
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "TelescopeResults",
+  callback = function()
+    vim.opt_local.foldenable = false
+  end,
+})
