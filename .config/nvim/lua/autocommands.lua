@@ -25,7 +25,7 @@ vim.api.nvim_create_autocmd("FileType", {
     -- in normal mode, only in this buffer, if <number>j is pressed, go down <number> logical lines
     -- however, if j is pressed without a number, go down 1 visual line.
     -- same thing for k
-    --vim.api.nvim_buf_set_keymap(0, "n", "j", "v:count == 0 and 'gj' or ('\\<Esc>' .. v:count .. 'j')", { expr = true, noremap = true })
-    --vim.api.nvim_buf_set_keymap(0, "n", "k", "v:count == 0 and 'gk' or ('\\<Esc>' .. v:count .. 'k')", { expr = true, noremap = true })
+    vim.keymap.set("n", "j", function() return vim.v.count == 0 and 'gj' or '<Esc>' .. vim.v.count .. 'j' end, { expr = true, noremap = true, buffer = 0 })
+    vim.keymap.set("n", "k", function() return vim.v.count == 0 and 'gk' or '<Esc>' .. vim.v.count .. 'k' end, { expr = true, noremap = true, buffer = 0 })
   end,
 })
