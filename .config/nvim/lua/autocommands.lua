@@ -10,7 +10,7 @@ vim.api.nvim_create_autocmd("FileType", {
   callback = function()
     vim.opt_local.wrap = true
     vim.opt_local.linebreak = true
-    -- if you are scroll past one logical line that wraps "n" visual lines, dont let the viewport
+    -- if you scroll past one logical line that wraps "n" visual lines, dont let the viewport
     -- jump "n" lines down at once. rather, make the viewport only scroll one line.
     -- this is useful when you are scrolling through paragraphs and you want the top of the viewport to
     -- be able to be at the middle of some paragraph.
