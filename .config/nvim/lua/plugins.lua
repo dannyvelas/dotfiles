@@ -68,6 +68,7 @@ require("lazy").setup({
             require("config.telescope")
         end,
     },
+    { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
     -- Git
     "tpope/vim-fugitive",
     {
