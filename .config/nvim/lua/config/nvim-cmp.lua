@@ -20,7 +20,10 @@ cmp.setup({
       -- Use <C-b/f> to scroll the docs
       ['<C-b>'] = cmp.mapping.scroll_docs(-4),
       ['<C-f>'] = cmp.mapping.scroll_docs(4),
+
       -- Use <CR>(Enter) to confirm selection
+      -- select: false makes it so that if there are suggestions, but you didn't pick any
+      -- and you click ENTER, a newline will be inserted instead of the first suggestion being inserted
       ['<CR>'] = cmp.mapping.confirm({ select = false }),
 
       -- A super tab
