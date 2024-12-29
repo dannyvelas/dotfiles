@@ -27,8 +27,8 @@ vim.opt.smartcase = true            -- but make it case sensitive if an uppercas
 --------------------------------------------------------------------------------------------------------------------------------------------------------------
 -- these options are for for the completion menu when you're in insert mode. 
 -- menu shows a popup menu to show the possible completions
--- menuone makes sure that that menu comes up, even when there is only one matche
-vim.opt.completeopt = {'menu', 'menuone' } 
+-- menuone makes sure that that menu comes up, even when there is only one match
+vim.opt.completeopt = {'menu', 'menuone' }
 
 vim.opt.cursorline = true           -- highlight cursor line underneath the cursor horizontally
 vim.opt.splitbelow = true           -- open new vertical split bottom
