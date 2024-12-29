@@ -1,5 +1,6 @@
-require('options')        
+require('options')
+require('autocommands')
 require('keymaps')
-require('plugins') 
+require('plugins')
 require('colorscheme')
 require('lsp')
