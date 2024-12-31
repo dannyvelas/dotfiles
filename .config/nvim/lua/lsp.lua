@@ -108,3 +108,7 @@ lspconfig.pyright.setup({
 lspconfig.svelte.setup({
   on_attach = on_attach
 })
+
+lspconfig.clangd.setup({
+  on_attach = on_attach
+})
