@@ -90,6 +90,10 @@ require("lazy").setup({
           require("config.nvim-tree")
         end,
     },
+    -- CSV Formatter
+    {
+      "godlygeek/tabular",
+    },
     -- prettier
     {
       "MunifTanjim/prettier.nvim",
