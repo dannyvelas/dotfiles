@@ -21,6 +21,8 @@
 !.config/nvim/lua/*
 !.config/nvim/lua/config/
 !.config/nvim/lua/config/*
+!.config/nvim/snippets/
+!.config/nvim/snippets/*
 !.config/nvim/after/
 !.config/nvim/after/plugin/
 !.config/nvim/after/plugin/*
