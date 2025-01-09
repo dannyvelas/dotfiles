@@ -1,3 +1,5 @@
+local ls = require("luasnip")
+
 -- define common options
 local opts = {
     noremap = true,      -- non-recursive
@@ -74,6 +76,7 @@ vim.keymap.set('n', '<C-t>', ':NvimTreeToggle<CR>', opts)
 vim.keymap.set('i', ',e', '<Esc>^"_d0i<Bs>', opts)
 
 -- digraphs
+-- i will use <c-k> for snips. so make c-\\ be for digraphs instead
 vim.keymap.set('i', '<C-\\>', '<C-k>', opts)
 
 -- i'd rather use c-d as a readline binding for deleting at point than shifting left
@@ -82,3 +85,10 @@ vim.keymap.set('i', '<C-\\>', '<C-k>', opts)
 -- i'l make c-y shift right since it's not being used for anything and it's to the right of c-t
 vim.keymap.set('i', '<C-t>', '<C-d>', opts)
 vim.keymap.set('i', '<C-y>', '<C-t>', opts)
+
+-----------------------
+-- Snippets --
+-----------------------
+vim.keymap.set({"i"}, "<C-K>", function() ls.expand() end, {silent = true})
+vim.keymap.set({"i", "s"}, "<C-L>", function() ls.jump( 1) end, {silent = true})
+vim.keymap.set({"i", "s"}, "<C-J>", function() ls.jump(-1) end, {silent = true})
