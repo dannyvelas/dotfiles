@@ -38,7 +38,7 @@ function fish_user_key_bindings
 end
 
 # opam
-source /Users/dannyvelasquez/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
+#source /Users/dannyvelasquez/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
 
 # rust
-source /Users/dannyvelasquez/.cargo/env.fish
+#source /Users/dannyvelasquez/.cargo/env.fish
