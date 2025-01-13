@@ -38,6 +38,8 @@
 
 !.tmux.conf
 
+!.wezterm.lua
+
 !.bin/
 !.bin/log
 
