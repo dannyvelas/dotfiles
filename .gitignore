@@ -39,6 +39,7 @@
 !.tmux.conf
 
 !.wezterm.lua
+!.aerospace.toml
 
 !.bin/
 !.bin/log
