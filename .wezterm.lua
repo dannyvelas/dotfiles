@@ -12,5 +12,12 @@ config.default_prog = { '/usr/local/bin/fish', '-l' }
 -- Use fira mono font
 config.font = wezterm.font 'Fira Mono'
 
+-- default font size
+config.font_size = 16.0
+
+-- Option should always be Meta never AltGr
+config.send_composed_key_when_left_alt_is_pressed = false
+config.send_composed_key_when_right_alt_is_pressed = false
+
 -- and finally, return the configuration to wezterm
 return config
