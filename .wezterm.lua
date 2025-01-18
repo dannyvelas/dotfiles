@@ -13,7 +13,7 @@ config.default_prog = { '/usr/local/bin/fish', '-l' }
 config.font = wezterm.font 'Fira Mono'
 
 -- default font size
-config.font_size = 16.0
+config.font_size = 24.0
 
 -- Option should always be Meta never AltGr
 config.send_composed_key_when_left_alt_is_pressed = false
