@@ -1,0 +1,103 @@
+[[keyboard.bindings]]
+action = "Last"
+key = 5
+mode = "Vi|~Search"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "FirstOccupied"
+key = 7
+mode = "Vi|~Search"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "Bracket"
+key = 6
+mode = "Vi|~Search"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "ToggleViMode"
+key = "A"
+mode = "Vi|~Search"
+
+[[keyboard.bindings]]
+action = "ToggleViMode"
+key = "A"
+mode = "Vi|~Search"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "IncreaseFontSize"
+key = "Equals"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "DecreaseFontSize"
+key = "Minus"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u001Bb"
+key = "B"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u001Bf"
+key = "F"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u001Bd"
+key = "D"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u001E"
+key = "Key6"
+mods = "Control"
+
+[terminal]
+
+[colors.bright]
+black = "#675f54"
+blue = "#5fdaff"
+cyan = "#84f088"
+green = "#98e036"
+magenta = "#ff9269"
+red = "#ff645a"
+white = "#f6f7ec"
+yellow = "#e0d561"
+
+[colors.normal]
+black = "#121418"
+blue = "#1398b9"
+cyan = "#509552"
+green = "#85c54c"
+magenta = "#d0633d"
+red = "#c94234"
+white = "#e5c6aa"
+yellow = "#f5ae2e"
+
+[colors.primary]
+background = "#292520"
+foreground = "#e5c7a9"
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+size = 20.0
+
+[font.normal]
+family = "Fira Mono"
+style = "Regular"
+
+[terminal.shell]
+program = "/usr/local/bin/fish"
+args = ["--login"]
+
+[window]
+opacity = 0.95
+
+[keyboard]

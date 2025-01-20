@@ -13,7 +13,7 @@
 !.config/i3/config
 
 !.config/alacritty/
-!.config/alacritty/alacritty.yml
+!.config/alacritty/alacritty.toml
 
 !.config/nvim/
 !.config/nvim/*
