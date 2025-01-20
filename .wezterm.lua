@@ -10,7 +10,7 @@ local config = wezterm.config_builder()
 config.default_prog = { '/usr/local/bin/fish', '-l' }
 
 -- Use fira mono font
-config.font = wezterm.font 'Fira Mono'
+config.font = wezterm.font 'FiraCode Nerd Font'
 
 -- default font size
 config.font_size = 24.0

@@ -90,7 +90,7 @@ TERM = "xterm-256color"
 size = 20.0
 
 [font.normal]
-family = "Fira Mono"
+family = "FiraMono Nerd Font"
 style = "Regular"
 
 [terminal.shell]
