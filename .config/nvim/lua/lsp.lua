@@ -112,3 +112,7 @@ lspconfig.svelte.setup({
 lspconfig.clangd.setup({
   on_attach = on_attach
 })
+
+lspconfig.ltex.setup({
+  on_attach = on_attach
+})

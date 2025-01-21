@@ -14,16 +14,27 @@ require('telescope').setup {
 }
 require('telescope').load_extension('fzf')
 
--- search all file names, including gitignored and hidden files
+-- telescope mini: search all files names not including gitignored and hidden files
 vim.keymap.set("n", "<C-h>", function()
+  builtin.find_files({
+    hidden = false,
+    no_ignore = false,
+  })
+end, {})
+
+-- search all file names, including gitignored and hidden files
+vim.keymap.set("n", "<leader>ta", function()
   builtin.find_files({
     hidden = true,
     no_ignore = true,
   })
 end, {})
 
+-- grep mini: search all files names not including gitignored and hidden files
+vim.keymap.set("n", "<leader>rr", builtin.live_grep, {})
+
 -- grep all files, including gitignored and hidden files
-vim.keymap.set("n", "<leader>rr", function()
+vim.keymap.set("n", "<leader>ra", function()
   builtin.live_grep({
     additional_args = function()
       return { "--hidden", "--no-ignore" }
@@ -31,17 +42,6 @@ vim.keymap.set("n", "<leader>rr", function()
   })
 end, {})
 
--- telescope mini: search all files names not including gitignored and hidden files
-vim.keymap.set("n", "<leader>tm", function()
-  builtin.find_files({
-    hidden = false,
-    no_ignore = false,
-  })
-end, {})
-
-
--- grep mini: search all files names not including gitignored and hidden files
-vim.keymap.set("n", "<leader>rm", builtin.live_grep, {})
 
 -- telescope on buffers
 vim.keymap.set("n", "<leader>tb", builtin.buffers, {})
