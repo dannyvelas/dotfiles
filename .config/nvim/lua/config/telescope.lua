@@ -20,7 +20,7 @@ vim.keymap.set("n", "<C-h>", function()
     hidden = false,
     no_ignore = false,
   })
-end, {})
+end, { noremap = true, silent = true })
 
 -- search all file names, including gitignored and hidden files
 vim.keymap.set("n", "<leader>ta", function()
@@ -28,10 +28,25 @@ vim.keymap.set("n", "<leader>ta", function()
     hidden = true,
     no_ignore = true,
   })
-end, {})
+end, { noremap = true, silent = true })
+
+-- find files in different directory
+vim.keymap.set("n", "<leader>td", function()
+  builtin.find_files({
+    cwd = vim.fn.input("Directory: ", "", "dir"),
+    hidden = false,
+    no_ignore = false,
+  })
+end, { noremap = true, silent = true })
+
+-- telescope on buffers
+vim.keymap.set("n", "<leader>tb", builtin.buffers, { noremap = true, silent = true })
+
+-- telescope for git branches
+vim.keymap.set("n", "<leader>tg", builtin.git_branches, { noremap = true, silent = true })
 
 -- grep mini: search all files names not including gitignored and hidden files
-vim.keymap.set("n", "<leader>rr", builtin.live_grep, {})
+vim.keymap.set("n", "<leader>rr", builtin.live_grep, { noremap = true, silent = true })
 
 -- grep all files, including gitignored and hidden files
 vim.keymap.set("n", "<leader>ra", function()
@@ -40,11 +55,8 @@ vim.keymap.set("n", "<leader>ra", function()
       return { "--hidden", "--no-ignore" }
     end,
   })
-end, {})
+end, { noremap = true, silent = true })
 
-
--- telescope on buffers
-vim.keymap.set("n", "<leader>tb", builtin.buffers, {})
 
 -- dont make telescope results fold
 vim.api.nvim_create_autocmd("FileType", {
