@@ -97,14 +97,6 @@ require("lazy").setup({
     {
       "godlygeek/tabular",
     },
-    -- prettier
-    {
-      "MunifTanjim/prettier.nvim",
-      dependencies = {
-        "neovim/nvim-lspconfig",
-        "nvimtools/none-ls.nvim",
-      }
-    },
     -- lang specific stuff
     {
       "jparise/vim-graphql",
