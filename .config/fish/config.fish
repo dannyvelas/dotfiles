@@ -37,6 +37,9 @@ function fish_user_key_bindings
     bind '$' bind_dollar
 end
 
+# zoxide
+eval "$(zoxide init fish)"
+
 # opam
 #source /Users/dannyvelasquez/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
 
