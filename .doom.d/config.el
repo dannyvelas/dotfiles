@@ -75,6 +75,5 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
-;; don't assume that $HOME is the root of any project living under $HOME
-(after! projectile (setq projectile-project-root-files-bottom-up (remove ".git"
-          projectile-project-root-files-bottom-up)))
+;; use relative line numbers
+(setq display-line-numbers-type 'relative)
