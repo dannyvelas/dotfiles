@@ -1,8 +1,8 @@
 ---
-title: "`(buffer-file-name)`"
+title: "${1:`(replace-regexp-in-string "-" " " (file-name-nondirectory (file-name-sans-extension (buffer-file-name))))`}"
 date: `(format-time-string "%Y-%m-%d")`
-publish: false
+publish: ${2:false}
 ---
-Tags: [[]]
+Tags: [[$3]]
 
 $0
