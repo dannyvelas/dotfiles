@@ -99,3 +99,10 @@ name as well to trigger updates"
 
 ;; need to run this later for it to not break frame size for some reason
 (run-at-time nil nil (cmd! (tab-bar-mode +1)))
+
+;;;;;;;;;;;;;;; snippets ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(set-file-template! "\\.md$" :mode 'markdown-mode)
+
+;;;;;;;;;;;;;;; macOS option ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(setq mac-right-option-modifier 'meta
+      ns-right-option-modifier  'meta)
