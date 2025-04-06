@@ -18,7 +18,9 @@ vim.api.nvim_create_autocmd("FileType", {
     -- visually indent wrapped lines a little bit
     vim.opt.breakindent = true
     -- these are the options for breakindent set above
-    -- indent wrapped lines by 2 spaces
+    -- visually indent wrapped lines so that it looks like
+    -- the wrapped part of the line is 2 spaces to the right of
+    -- the start of the line
     -- don't add indents to lines that are < 40 characters
     vim.opt_local.breakindentopt = "shift:2,min:40"
 

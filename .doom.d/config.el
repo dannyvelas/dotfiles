@@ -117,3 +117,8 @@ name as well to trigger updates"
     (apply orig-fn beg end type ?_ args))
 (advice-add 'evil-delete :around 'bb/evil-delete)
 ;;;;;;;;;;;;;;; end vim stuff ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+;;;;;;;;;;;;;;; markdown stuff ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(add-hook 'markdown-mode-hook 'adaptive-wrap-prefix-mode)
+;;;;;;;;;;;;;;; end markdown stuff ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
