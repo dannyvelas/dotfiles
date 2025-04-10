@@ -120,5 +120,17 @@ name as well to trigger updates"
 
 
 ;;;;;;;;;;;;;;; markdown stuff ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; make the start of wrapped lines visually appear like they are indented the same
+;; level as the actual start of the entire line
 (add-hook 'markdown-mode-hook 'adaptive-wrap-prefix-mode)
+
+;; make j and k move visual, not logical lines. this makes it easier to work
+;; with lines that are soft-wrapped
+(defun my/markdown-evil-visual-line-keys ()
+  "Use visual line movement keys in markdown files only."
+  (evil-define-key 'motion markdown-mode-map
+    "j" 'evil-next-visual-line
+    "k" 'evil-previous-visual-line))
+
+(add-hook 'markdown-mode-hook #'my/markdown-evil-visual-line-keys)
 ;;;;;;;;;;;;;;; end markdown stuff ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
