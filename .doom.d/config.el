@@ -36,7 +36,7 @@
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type t)
+(setq display-line-numbers-type 'relative)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -75,9 +75,6 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
-;; use relative line numbers
-(setq display-line-numbers-type 'relative)
-
 ;;;;;;;;;;;;;;; permanently display workspaces in tab bar ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (after! persp-mode
   ;; alternative, non-fancy version which only centers the output of +workspace--tabline
@@ -102,6 +99,7 @@ name as well to trigger updates"
 ;;;;;;;;;;;;;;; end permanently display workspaces in tab bar ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;; snippets ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; make every new markdown file in a "notes" directory have a frontmatter on it.
 (set-file-template! "/notes/[^\\.]+\\.md$" :trigger "__markdown-frontmatter.md" :mode 'markdown-mode)
 ;;;;;;;;;;;;;;; end snippets ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -116,6 +114,18 @@ name as well to trigger updates"
 (defun bb/evil-delete (orig-fn beg end &optional type _ &rest args)
     (apply orig-fn beg end type ?_ args))
 (advice-add 'evil-delete :around 'bb/evil-delete)
+
+;; in insert mode, always make Ctrl+d act as "<Delete>" (deleting a character after point)
+;; and, C-k delete everything after point to EOL
+;; since C-d was previously used for evil-shift-left-line, we'll change c-t to now be that
+;; and we'll change c-y to now be evil-shift-right-line.
+(defun my/global-insert-mode-keys ()
+  (evil-define-key 'insert global-map
+    (kbd "C-d") #'delete-char
+    (kbd "C-t") #'evil-shift-left-line
+    (kbd "C-y") #'evil-shift-right-line
+    (kbd "C-k") #'kill-line))
+(add-hook 'evil-insert-state-entry-hook #'my/global-insert-mode-keys)
 ;;;;;;;;;;;;;;; end vim stuff ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
@@ -131,6 +141,12 @@ name as well to trigger updates"
   (evil-define-key 'motion markdown-mode-map
     "j" 'evil-next-visual-line
     "k" 'evil-previous-visual-line))
-
 (add-hook 'markdown-mode-hook #'my/markdown-evil-visual-line-keys)
+
+;; m-b to move backward word instead of bolding word
+;; TODO: this doesn't work. gets overridden by markdown-insert-bold
+(defun my/markdown-insert-mode-keys ()
+  (evil-define-key 'insert markdown-mode-map
+    (kbd "M-b") #'backward-word))
+(add-hook 'markdown-mode-hook #'my/markdown-insert-mode-keys)
 ;;;;;;;;;;;;;;; end markdown stuff ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
