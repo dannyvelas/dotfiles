@@ -145,8 +145,14 @@ name as well to trigger updates"
 
 ;; m-b to move backward word instead of bolding word
 ;; TODO: this doesn't work. gets overridden by markdown-insert-bold
-(defun my/markdown-insert-mode-keys ()
-  (evil-define-key 'insert markdown-mode-map
-    (kbd "M-b") #'backward-word))
-(add-hook 'markdown-mode-hook #'my/markdown-insert-mode-keys)
+;;(defun my/markdown-insert-mode-keys ()
+;;  (evil-define-key 'insert markdown-mode-map
+;;    (kbd "M-b") #'backward-word))
+;;(add-hook 'markdown-mode-hook #'my/markdown-insert-mode-keys)
+
+;; attempt no.2
+;; m-b to move backward word instead of bolding word
+;;(map! :after markdown-mode
+;;        :map markdown-mode-map
+;;        :i "M-b" #'backward-word)
 ;;;;;;;;;;;;;;; end markdown stuff ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
