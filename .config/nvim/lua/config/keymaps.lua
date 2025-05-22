@@ -76,3 +76,16 @@ end, { noremap = true, expr = true })
 vim.keymap.set("c", "<M-d>", function()
   return "<S-Right><C-W>"
 end, { noremap = true, expr = true })
+
+-----------------
+-- Insert mode --
+-----------------
+-- shortcut to merge text of line with end of previous line
+vim.keymap.set("i", ",e", '<Esc>^"_d0i<Bs>', opts)
+
+-- i'd rather use c-d as a readline binding for deleting at point than shifting left
+-- so, i'll make c-t inherit the behavior of c-d
+-- if c-t is shift-left, then there's no way to shift right.
+-- i'l make c-y shift right since it's not being used for anything and it's to the right of c-t
+vim.keymap.set("i", "<C-t>", "<C-d>", opts)
+vim.keymap.set("i", "<C-y>", "<C-t>", opts)
