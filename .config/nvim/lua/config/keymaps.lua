@@ -84,4 +84,4 @@ vim.keymap.set("i", ",e", '<Esc>^"_d0i<Bs>', opts)
 -----------------
 -- Normal mode --
 -----------------
-vim.keymap.set("n", "<leader>gg", ":vertical rightbelow G<CR>", opts)
+vim.keymap.set("n", "<leader>gg", ":vertical rightbelow G<CR>")
