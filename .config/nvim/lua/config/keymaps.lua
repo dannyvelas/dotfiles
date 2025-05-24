@@ -37,7 +37,7 @@ vim.keymap.set("v", "p", '"_dp', opts)
 -----------------------
 vim.keymap.set("i", "<C-A>", "<C-O>^", opts) -- front of line insert mode
 vim.keymap.set("i", "<C-e>", "<End>", opts) -- end of line insert mode (command mode is not needed bc it already works out the box)
-vim.keymap.set("i", "<C-D>", "<Delete>", opts) -- delete at point insert mode
+--vim.keymap.set("i", "<C-D>", "<Delete>", opts) -- delete at point insert mode
 vim.keymap.set("i", "<C-f>", "<Right>", opts) -- move cursor to the right insert mode. note: we will add this to command mode below
 vim.keymap.set("i", "<C-b>", "<Left>", opts)
 
@@ -59,7 +59,7 @@ end, { noremap = true, expr = true }) -- move cursor to the left command mode
 -- so, lets do <C-X><C-A> when we want that functionalality
 vim.keymap.set("c", "<C-X><C-A>", "<C-A>")
 
--- TODO: translate this to lua
+-- tried to translate this to Lua with ChatGPT but couldn't hack it: vim.keymap.set("c", "<C-k>", function() local line = vim.fn.getcmdline() local pos = vim.fn.getcmdpos() return line:sub(1, pos - 1) end, { noremap = true, expr = true })
 vim.cmd("cnoremap <C-k> <c-\\>egetcmdline()[:getcmdpos()-2]<CR>") -- delete everything past point.
 
 -- meta key bindings insert mode
@@ -87,5 +87,5 @@ vim.keymap.set("i", ",e", '<Esc>^"_d0i<Bs>', opts)
 -- so, i'll make c-t inherit the behavior of c-d
 -- if c-t is shift-left, then there's no way to shift right.
 -- i'l make c-y shift right since it's not being used for anything and it's to the right of c-t
-vim.keymap.set("i", "<C-t>", "<C-d>", opts)
-vim.keymap.set("i", "<C-y>", "<C-t>", opts)
+--vim.keymap.set("i", "<C-t>", "<C-d>", opts)
+--vim.keymap.set("i", "<C-y>", "<C-t>", opts)
