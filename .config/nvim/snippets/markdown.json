@@ -3,7 +3,7 @@
     "prefix": "fm",
     "body": [
       "---",
-      "title: '${TM_FILENAME_BASE}'",
+      "title: '${1}${TM_FILENAME_BASE}'",
       "date: '${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}'",
       "publish: ${2:false}",
       "---",
