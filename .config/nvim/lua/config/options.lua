@@ -3,3 +3,4 @@
 -- Add any additional options here
 vim.opt.hlsearch = false -- do not highlight matches
 vim.opt.timeoutlen = 1000 -- make timeoutlen 1 second so that it's easier to press <c-x><c-a> in command line mode
+vim.opt.showmode = true -- not using lualine so i need this
