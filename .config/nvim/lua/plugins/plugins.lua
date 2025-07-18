@@ -10,28 +10,24 @@ return {
   -- my plugins
   "tpope/vim-fugitive",
   "tpope/vim-rsi",
-  -- set foldmethod=indent for bigfiles by default
+  -- configure stuff
   {
-    "snacks.nvim",
+    "saghen/blink.cmp",
     opts = {
-      bigfile = {
-        notify = true, -- show notification when big file detected
-        size = 1.5 * 1024 * 1024, -- 1.5MB
-        line_length = 1000, -- average line length (useful for minified files)
-        -- Enable or disable features when big file detected
-        ---@param ctx {buf: number, ft:string}
-        setup = function(ctx)
-          if vim.fn.exists(":NoMatchParen") ~= 0 then
-            vim.cmd([[NoMatchParen]])
-          end
-          Snacks.util.wo(0, { foldmethod = "indent", statuscolumn = "", conceallevel = 0 })
-          vim.b.minianimate_disable = true
-          vim.schedule(function()
-            if vim.api.nvim_buf_is_valid(ctx.buf) then
-              vim.bo[ctx.buf].syntax = ctx.ft
-            end
-          end)
-        end,
+      completion = {
+        list = {
+          selection = {
+            -- When `true`, will automatically select the first item in the completion list
+            preselect = false,
+            -- preselect = function(ctx) return vim.bo.filetype ~= 'markdown' end,
+
+            -- When `true`, inserts the completion item automatically when selecting it
+            -- You may want to bind a key to the `cancel` command (default <C-e>) when using this option,
+            -- which will both undo the selection and hide the completion menu
+            auto_insert = false,
+            -- auto_insert = function(ctx) return vim.bo.filetype ~= 'markdown' end
+          },
+        },
       },
     },
   },
