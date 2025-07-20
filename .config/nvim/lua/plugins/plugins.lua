@@ -10,6 +10,15 @@ return {
   -- my plugins
   "tpope/vim-fugitive",
   "tpope/vim-rsi",
+  {
+    {
+      "quarto-dev/quarto-nvim",
+      dependencies = {
+        "jmbuhr/otter.nvim",
+        "nvim-treesitter/nvim-treesitter",
+      },
+    },
+  },
   -- configure stuff
   {
     "saghen/blink.cmp",
