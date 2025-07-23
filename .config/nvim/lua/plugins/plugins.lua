@@ -20,27 +20,7 @@ return {
   -- configure stuff
   {
     "saghen/blink.cmp",
-    dependencies = {
-      {
-        "L3MON4D3/LuaSnip",
-        build = "make install_jsregexp", -- needed for VSCode style variable transforms
-        version = "v2.*",
-        dependencies = {
-          {
-            "rafamadriz/friendly-snippets",
-          },
-        },
-        config = function()
-          require("luasnip").setup({ enable_autosnippets = true })
-          require("luasnip.loaders.from_vscode").lazy_load()
-          require("luasnip.loaders.from_lua").lazy_load({ paths = { vim.fn.stdpath("config") .. "/snippets" } })
-        end,
-      },
-    },
     opts = {
-      snippets = {
-        preset = "luasnip",
-      },
       completion = {
         list = {
           selection = {

@@ -1,0 +1,14 @@
+{
+  "Frontmatter with Tags": {
+    "prefix": "fm",
+    "body": [
+      "---",
+      "title: '${1}${TM_FILENAME_BASE}'",
+      "date: '${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}'",
+      "publish: ${2:false}",
+      "---",
+      "Tags: [[${0}]]"
+    ],
+    "description": "Insert YAML frontmatter with title, date, publish, and tags"
+  }
+}
