@@ -6,3 +6,4 @@ vim.opt.timeoutlen = 1000 -- make timeoutlen 1 second so that it's easier to pre
 vim.opt.showmode = true -- not using lualine so i need this
 vim.opt.laststatus = 2 -- not using lualine so i want one status line per window
 vim.opt.ruler = true
+vim.opt.foldlevel = 10 -- i don't like pressing 100zc all the time when i want to gradually open folds
