@@ -8,6 +8,9 @@ return {
     },
   },
   -- my plugins
+  {
+    "mechatroner/rainbow_csv",
+  },
   "tpope/vim-fugitive",
   "tpope/vim-rsi",
   {
