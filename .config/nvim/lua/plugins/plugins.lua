@@ -22,6 +22,14 @@ return {
   },
   -- configure stuff
   {
+    "mason-org/mason.nvim",
+    opts = {
+      ensure_installed = {
+        "harper-ls",
+      },
+    },
+  },
+  {
     "saghen/blink.cmp",
     opts = {
       completion = {
@@ -57,6 +65,24 @@ return {
     "neovim/nvim-lspconfig",
     opts = {
       inlay_hints = { enabled = false },
+      servers = {
+        ["harper-ls"] = {
+          settings = {
+            ["harper-ls"] = {
+              linters = {
+                SentenceCapitalization = false,
+                SpellCheck = false,
+              },
+            },
+          },
+        },
+      },
+      setup = {
+        ["harper-ls"] = function(_, opts)
+          require("lspconfig").harper_ls.setup({ server = opts })
+          return true
+        end,
+      },
     },
   },
 }
