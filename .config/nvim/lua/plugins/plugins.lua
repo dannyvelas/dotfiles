@@ -66,7 +66,7 @@ return {
     opts = {
       inlay_hints = { enabled = false },
       servers = {
-        ["harper-ls"] = {
+        ["harper_ls"] = {
           settings = {
             ["harper-ls"] = {
               linters = {
@@ -76,12 +76,6 @@ return {
             },
           },
         },
-      },
-      setup = {
-        ["harper-ls"] = function(_, opts)
-          require("lspconfig").harper_ls.setup({ server = opts })
-          return true
-        end,
       },
     },
   },
