@@ -67,6 +67,7 @@ return {
       inlay_hints = { enabled = false },
       servers = {
         ["harper_ls"] = {
+          filetypes = { "markdown" },
           settings = {
             ["harper-ls"] = {
               linters = {
