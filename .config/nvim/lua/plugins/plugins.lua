@@ -49,6 +49,24 @@ return {
       },
     },
   },
+  {
+    "stevearc/conform.nvim",
+    opts = {
+      formatters_by_ft = {
+        markdown = { "injected" },
+      },
+      formatters = {
+        injected = {
+          options = {
+            -- map code block languages to formatters
+            lang_to_formatters = {
+              python = { "ruff_format" },
+            },
+          },
+        },
+      },
+    },
+  },
   -- disable stuff
   { "nvim-lualine/lualine.nvim", enabled = false },
   { "akinsho/bufferline.nvim", enabled = false },
