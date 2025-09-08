@@ -94,7 +94,7 @@ family = "FiraMono Nerd Font"
 style = "Regular"
 
 [terminal.shell]
-program = "/usr/local/bin/fish"
+program = "/opt/homebrew/bin/fish"
 args = ["--login"]
 
 [window]
