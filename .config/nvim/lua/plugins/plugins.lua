@@ -68,6 +68,7 @@ return {
     },
   },
   -- disable stuff
+  { "nvim-mini/mini.pairs", enabled = false },
   { "nvim-lualine/lualine.nvim", enabled = false },
   { "akinsho/bufferline.nvim", enabled = false },
   { "folke/noice.nvim", enabled = false },
