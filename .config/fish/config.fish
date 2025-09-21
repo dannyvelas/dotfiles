@@ -45,3 +45,5 @@ eval "$(zoxide init fish)"
 
 # rust
 #source /Users/dannyvelasquez/.cargo/env.fish
+set -gx VOLTA_HOME "$HOME/.volta"
+set -gx PATH "$VOLTA_HOME/bin" $PATH

@@ -20,6 +20,12 @@ return {
       "nvim-treesitter/nvim-treesitter",
     },
   },
+  {
+    "Kicamon/markdown-table-mode.nvim",
+    config = function()
+      require("markdown-table-mode").setup()
+    end,
+  },
   -- configure stuff
   {
     "mason-org/mason.nvim",
