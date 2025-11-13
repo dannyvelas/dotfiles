@@ -98,6 +98,7 @@ return {
               linters = {
                 SentenceCapitalization = false,
                 SpellCheck = false,
+                LongSentences = false,
               },
             },
           },
