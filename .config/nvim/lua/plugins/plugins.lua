@@ -28,14 +28,6 @@ return {
   },
   -- configure stuff
   {
-    "mason-org/mason.nvim",
-    opts = {
-      ensure_installed = {
-        "harper-ls",
-      },
-    },
-  },
-  {
     "saghen/blink.cmp",
     opts = {
       completion = {
@@ -90,20 +82,6 @@ return {
     "neovim/nvim-lspconfig",
     opts = {
       inlay_hints = { enabled = false },
-      servers = {
-        ["harper_ls"] = {
-          filetypes = { "markdown" },
-          settings = {
-            ["harper-ls"] = {
-              linters = {
-                SentenceCapitalization = false,
-                SpellCheck = false,
-                LongSentences = false,
-              },
-            },
-          },
-        },
-      },
     },
   },
 }
