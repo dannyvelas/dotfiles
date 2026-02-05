@@ -6,6 +6,8 @@
 !.config/
 !.config/fish/
 !.config/fish/config.fish
+!.config/fish/conf.d/
+!.config/fish/conf.d/fnm.fish
 !.config/fish/functions/
 !.config/fish/functions/*
 
