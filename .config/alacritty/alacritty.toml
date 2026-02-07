@@ -101,3 +101,8 @@ args = ["--login"]
 opacity = 0.95
 
 [keyboard]
+
+[[keyboard.bindings]]
+key = "Return"
+mods = "Shift"
+chars = "\u001b\r"
