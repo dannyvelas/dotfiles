@@ -84,4 +84,20 @@ return {
       inlay_hints = { enabled = false },
     },
   },
+  {
+    "folke/sidekick.nvim",
+    opts = {
+      copilot = {
+        status = {
+          level = vim.log.levels.OFF,
+        },
+      },
+    },
+  },
+  {
+    "zbirenbaum/copilot.lua",
+    opts = {
+      disable_limit_reached_message = true,
+    },
+  },
 }

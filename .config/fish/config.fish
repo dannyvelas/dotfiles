@@ -11,12 +11,12 @@ abbr --add gs git status
 abbr --add gco git checkout
 abbr --add gcm git commit -m
 
-
 # !$ and !! convenience
 function bind_bang
     switch (commandline -t)[-1]
         case "!"
-            commandline -t $history[1]; commandline -f repaint
+            commandline -t $history[1]
+            commandline -f repaint
         case "*"
             commandline -i !
     end
@@ -45,5 +45,3 @@ eval "$(zoxide init fish)"
 
 # rust
 #source /Users/dannyvelasquez/.cargo/env.fish
-set -gx VOLTA_HOME "$HOME/.volta"
-set -gx PATH "$VOLTA_HOME/bin" $PATH
