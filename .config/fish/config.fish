@@ -40,6 +40,9 @@ end
 # zoxide
 eval "$(zoxide init fish)"
 
+# fzf
+fzf --fish | source
+
 # opam
 #source /Users/dannyvelasquez/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
 
