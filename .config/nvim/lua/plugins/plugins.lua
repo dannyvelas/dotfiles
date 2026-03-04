@@ -92,6 +92,9 @@ return {
           level = vim.log.levels.OFF,
         },
       },
+      nes = {
+        { enabled = false },
+      },
     },
   },
   {
