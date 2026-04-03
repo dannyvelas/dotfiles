@@ -43,8 +43,12 @@ eval "$(zoxide init fish)"
 # fzf
 fzf --fish | source
 
+# nim
+fish_add_path -g ~/.nimble/bin/
+
 # opam
 #source /Users/dannyvelasquez/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
+eval (opam env --switch=default)
 
 # rust
 #source /Users/dannyvelasquez/.cargo/env.fish
