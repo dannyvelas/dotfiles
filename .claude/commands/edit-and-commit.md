@@ -9,15 +9,9 @@ After completing the above task, commit the changes using a conventional commit 
 Stage only the files that were modified as part of the task, then commit using this exact shell pattern:
 
 ```sh
-MSG=$(cat <<'EOF'
-<subject line>
+git commit "<subject line>
 
 <body>
 
-Co-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>
-EOF
-)
-git commit <files> -m "$(echo "$MSG" | sed 's/[[:space:]]*$//')"
+Co-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>" <files> -m
 ```
-
-The `sed` strips trailing whitespace from each line, preventing blank lines that contain only spaces from ending up in the commit message.
