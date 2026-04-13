@@ -14,7 +14,16 @@ Rules for updating the document:
 - Stick to the topic of the document. Do not include tangential information that came up in conversation but does not belong in a focused reference on this subject.
 - The document should always look as if it is complete and ready to be read — treat every update as if it might be the last one.
 
-After updating the document, commit the changes using a conventional commit message. The message should:
+After updating the document, re-read it from top to bottom and check whether it is well-structured and cohesive:
+
+- Every section should belong where it is.
+- Nothing should be repeated unnecessarily.
+- Every term, entity, or concept referenced should have been introduced or defined before its first use — a reader encounters the document top to bottom, so nothing should appear unexplained before it is established.
+- A reader following the document start to finish should feel like it holds together as a single coherent piece.
+
+If the document falls short of any of these standards, make targeted edits to restore cohesion. Only change what is needed — do not rewrite content, add new information, or make edits unrelated to structure and flow.
+
+Then commit the changes using a conventional commit message. The message should:
 - Start with the appropriate type prefix (feat, fix, docs, refactor, chore, etc.)
 - Include a concise subject line under 72 characters
 - Include a short body if the change warrants explanation beyond the subject line
