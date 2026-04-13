@@ -38,6 +38,11 @@ key = "Minus"
 mods = "Control"
 
 [[keyboard.bindings]]
+chars = "\u001Bc"
+key = "C"
+mods = "Alt"
+
+[[keyboard.bindings]]
 chars = "\u001Bb"
 key = "B"
 mods = "Alt"
