@@ -1,8 +1,9 @@
+doc: /Users/dannyvelasquez/RemoteGit/MyGithub/notes/taxes.md
+context: A personal tax reference built iteratively during a filing session. The goal is that next year, the user can read it instead of asking the same questions again. Write for a reader who already understands personal finance basics.
+
 $ARGUMENTS
 
-Answer the tax question above. Then update /Users/dannyvelasquez/RemoteGit/MyGithub/notes/taxes.md to include the new information.
-
-The document is a personal tax reference built iteratively during a filing session. The goal is that next year, the user can read it instead of asking the same questions again.
+Answer the question above. Then update the document at the path specified above to include the new information.
 
 Rules for updating the document:
 - Read the current document before editing so you have the full picture.
