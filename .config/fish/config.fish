@@ -52,3 +52,6 @@ eval (opam env --switch=default)
 
 # rust
 #source /Users/dannyvelasquez/.cargo/env.fish
+
+# jj
+jj util completion fish | source
