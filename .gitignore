@@ -31,6 +31,9 @@
 !.config/nvim/after/plugin/
 !.config/nvim/after/plugin/*
 
+!.config/jj/
+!.config/jj/config.toml
+
 !.vimrc
 !.vim/
 !.vim/.vimrc
