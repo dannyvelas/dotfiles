@@ -1,8 +1,6 @@
-$ARGUMENTS
+Always check these three lists: "Fun Coding", "Fun non-coding", "Useful coding ideas".
 
-The input above (if given) may specify specific list names to check instead of the default. Default lists: "Fun Coding", "Fun non-coding", "Useful coding ideas".
-
-Your goal is to surface a short, ranked list of candidate reminders (tasks) worth working on right now, sized to fit a single ~1 hour work session — that's the fixed target every time this runs, not something passed in.
+Your goal is to surface a short, ranked list of candidate reminders (tasks) worth working on right now, sized to fit a single ~1 hour work session.
 
 ## Background on how this user's Reminders app works
 
@@ -19,7 +17,7 @@ Your goal is to surface a short, ranked list of candidate reminders (tasks) wort
 
 ## Step 1 — Fetch and resolve lists
 
-Run `reminders show-lists`, match the requested/default list names against the real names, then fetch each with `reminders show "<list>" --format json`.
+Run `reminders show-lists`, match the three list names above against the real names, then fetch each with `reminders show "<list>" --format json`.
 
 ## Step 2 — Filter
 
