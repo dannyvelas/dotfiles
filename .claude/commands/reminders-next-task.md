@@ -1,13 +1,13 @@
 $ARGUMENTS
 
-The input above (if given) may specify a time budget (e.g. "2 hours") and/or specific list names to check. If empty, default to a ~1 hour time budget and these three lists: "Fun Coding", "Fun non-coding", "Useful coding ideas".
+The input above (if given) may specify specific list names to check instead of the default. Default lists: "Fun Coding", "Fun non-coding", "Useful coding ideas".
 
-Your goal is to surface a short, ranked list of candidate reminders (tasks) worth working on right now, sized to fit the time budget.
+Your goal is to surface a short, ranked list of candidate reminders (tasks) worth working on right now, sized to fit a single ~1 hour work session — that's the fixed target every time this runs, not something passed in.
 
 ## Background on how this user's Reminders app works
 
 - Reminders is used like Jira: each **list** is a project, each **reminder** in it is a ticket, with a priority and (sometimes) a note acting as the description. Long lists are backlogs.
-- The `reminders` CLI (`/opt/homebrew/bin/reminders`, keith/reminders-cli) reads the macOS Reminders app. Run `reminders show-lists` first to get the exact current list names — the user's casual name for a list doesn't always match exactly (e.g. "Fun" in conversation turned out to actually be "Fun Coding"). Always resolve against `show-lists` before querying rather than guessing.
+- The `reminders` CLI (`/opt/homebrew/bin/reminders`, keith/reminders-cli) reads the macOS Reminders app. Run `reminders show-lists` first to get the exact current list names. Always resolve against `show-lists` before querying rather than guessing.
 - Pull each list with `reminders show "<list name>" --format json`. Useful fields: `title`, `notes`, `priority`.
 - EventKit's `priority` field maps to the exclamation-mark scheme the user thinks in:
   - `1` → `!!!` (high interest — wants to do this soon)
