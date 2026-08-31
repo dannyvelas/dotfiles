@@ -1,0 +1,44 @@
+$ARGUMENTS
+
+The input above (if given) may specify a time budget (e.g. "2 hours") and/or specific list names to check. If empty, default to a ~1 hour time budget and these three lists: "Fun Coding", "Fun non-coding", "Useful coding ideas".
+
+Your goal is to surface a short, ranked list of candidate reminders (tasks) worth working on right now, sized to fit the time budget.
+
+## Background on how this user's Reminders app works
+
+- Reminders is used like Jira: each **list** is a project, each **reminder** in it is a ticket, with a priority and (sometimes) a note acting as the description. Long lists are backlogs.
+- The `reminders` CLI (`/opt/homebrew/bin/reminders`, keith/reminders-cli) reads the macOS Reminders app. Run `reminders show-lists` first to get the exact current list names — the user's casual name for a list doesn't always match exactly (e.g. "Fun" in conversation turned out to actually be "Fun Coding"). Always resolve against `show-lists` before querying rather than guessing.
+- Pull each list with `reminders show "<list name>" --format json`. Useful fields: `title`, `notes`, `priority`.
+- EventKit's `priority` field maps to the exclamation-mark scheme the user thinks in:
+  - `1` → `!!!` (high interest — wants to do this soon)
+  - `5` → `!!` (medium interest)
+  - `9` → `!` (low interest)
+  - `0` → no priority set at all — this means the user probably isn't committed to doing it (candidate for eventual `#WONTDO`). Exclude these from recommendations.
+- If `notes` contains `// #WONTDO`, the user has explicitly decided not to do it — it's an artifact of round-tripping through the "Good Task" app. Always exclude these, never recommend them.
+- Other inline tags in notes (e.g. `// #Homelab`, `// #Doing`) are just the user's own categorization, not filtering signals — but surface them in your rationale when relevant (`#Doing` means it's an active project already underway, not a fresh start).
+
+## Step 1 — Fetch and resolve lists
+
+Run `reminders show-lists`, match the requested/default list names against the real names, then fetch each with `reminders show "<list>" --format json`.
+
+## Step 2 — Filter
+
+Drop any reminder where:
+- `notes` contains `#WONTDO`, or
+- `priority` is `0`.
+
+## Step 3 — Estimate effort and rank
+
+There's no time-estimate metadata on reminders, so use judgment based on the title/notes:
+- Prefer tasks scopeable to the time budget — ideally 30 min–3 hrs, hard ceiling 6 hrs. Never recommend something that's really a multi-week epic as-is (e.g. "set up a k8s cluster", "make a game boy emulator", "build a laptop"). For a big idea like that, either skip it or reframe it as a small bounded *first session* (e.g. "spend an hour reading the docs and writing a plan") instead of the whole thing.
+- Rank primarily by priority tier (`!!!` > `!!` > `!`); use estimated time as the tiebreaker when priority ties, favoring shorter tasks.
+
+## Step 4 — Report
+
+Group the output into buckets rather than one flat list, e.g.:
+- **Quick wins** (~15–45 min, usually `!!!`)
+- **Solid ~1hr sessions**
+- **Bigger builds, if you want to actually make something** (1–3 hrs)
+- Anything ambiguous (already marked `#Doing`, needs other people/equipment, etc.) — flag separately rather than mixing it in.
+
+For each candidate, give one line: priority stars, source list, and a short reason it's scoped well for the time budget. End by asking what mood/context the user is in (heads-down code vs. reading/research vs. away-from-keyboard) so the list can be narrowed further.
