@@ -38,20 +38,20 @@ function fish_user_key_bindings
 end
 
 # zoxide
-eval "$(zoxide init fish)"
+type -q zoxide; and eval "$(zoxide init fish)"
 
 # fzf
-fzf --fish | source
+type -q fzf; and fzf --fish | source
 
 # nim
 fish_add_path -g ~/.nimble/bin/
 
 # opam
 #source /Users/dannyvelasquez/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
-eval (opam env --switch=default)
+type -q opam; and eval (opam env --switch=default)
 
 # rust
 #source /Users/dannyvelasquez/.cargo/env.fish
 
 # jj
-jj util completion fish | source
+type -q jj; and jj util completion fish | source
