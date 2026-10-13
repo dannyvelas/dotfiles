@@ -91,4 +91,4 @@ option_as_alt = 'Both'
 [[keyboard.bindings]]
 key = "Return"
 mods = "Shift"
-chars = "\u001b\r"
+chars = "\n"
