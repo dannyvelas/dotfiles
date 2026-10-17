@@ -37,6 +37,10 @@
 !.config/git/
 !.config/git/config
 
+!.config/systemd/
+!.config/systemd/user/
+!.config/systemd/user/rclone-gdrive.service
+
 !.vimrc
 !.vim/
 !.vim/.vimrc

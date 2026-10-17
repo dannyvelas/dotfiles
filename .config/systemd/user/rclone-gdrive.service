@@ -1,0 +1,14 @@
+[Unit]
+Description=Mount Google Drive via rclone
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=notify
+ExecStartPre=/usr/bin/env mkdir -p %h/GoogleDrive
+ExecStart=/usr/bin/env rclone mount gdrive: %h/GoogleDrive --vfs-cache-mode writes --config %h/.config/rclone/rclone.conf
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=default.target
