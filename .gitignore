@@ -34,6 +34,9 @@
 !.config/jj/
 !.config/jj/config.toml
 
+!.config/git/
+!.config/git/config
+
 !.vimrc
 !.vim/
 !.vim/.vimrc
